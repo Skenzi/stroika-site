@@ -1,0 +1,65 @@
+@import './base.css';
+
+#app {
+  max-width: 1440px;
+  margin: 0 auto;
+  overflow-x: hidden;
+  font-weight: normal;
+}
+
+.bg-main {
+  background-color: var(--main-color);
+}
+
+.bg-dark-main {
+  background-color: var(--main-dark-color);
+}
+
+.bg-light-grey {
+  background-color: var(--light-grey);
+}
+.d-flex {
+  display: flex;
+}
+
+.justify-between {
+  justify-content: space-between;
+}
+
+.align-center {
+  align-items: center;
+}
+
+.flex-col {
+  flex-direction: column;
+}
+
+.flex-row {
+  flex-direction: row;
+}
+
+.p-12-16-12-24 {
+  padding: 12px 16px 12px 24px;
+}
+
+.p-12-20 {
+  padding: 12px 20px;
+}
+
+.m-40-0-16-0 {
+  margin: 40px 0 16px 0;
+}
+
+.m-40-40-0-40 {
+  margin: 40px 40px 0 40px;
+}
+
+.m-b-16 {
+  margin-bottom: 16px;
+}
+
+.line {
+  height: 1px;
+  background-color: white;
+  border: none;
+}
