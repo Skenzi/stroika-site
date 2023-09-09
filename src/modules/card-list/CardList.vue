@@ -14,12 +14,12 @@ const cardMapping = {
     'category': CategoryCard
 }
 const card = cardMapping[props.cardType];
-const columnClass = `col-${props.column}`
+const columnClass = `col-${props.column}`;
 </script>
 
 <template>
     <div class="card-list">
-        <card :class="columnClass" v-for="item in items" :position="position" :header="item.header" :key="item.id" :price="item.price" :imagePath="item.imagePath" :description="item.description" :discount="item.discount">
+        <card :class="columnClass" v-for="item in items" :position="position" :header="item.header || item.description" :key="item.id" :price="item.price" :imagePath="item.imagePath" :description="item.description" :discount="item.discount">
         </card>
     </div>
 </template>

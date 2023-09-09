@@ -25,6 +25,8 @@ const props = defineProps({
 <style scoped>
     .description-page {
         padding: 40px 740px 90px 100px;
+        background-size: cover;
+        background-repeat: no-repeat;
     }
     .description-page__path {
         margin-bottom: 20px;

@@ -1,8 +1,8 @@
-<script lang="ts">
-import { defineComponent, ref, computed } from 'vue'
-
-export default defineComponent({
-    setup() {
+<script lang="ts" setup>
+import { ref, computed } from 'vue'
+        defineProps({
+            buttonText: String
+        })
         let isOpen = ref(false);
         const menuClasses = computed(() => ({
             'dropdown__menu--open': isOpen.value
@@ -13,20 +13,11 @@ export default defineComponent({
         const handler = () => {
             isOpen.value = !isOpen.value;
         }
-        return {
-            isOpen,
-            buttonClasses,
-            menuClasses,
-            handler
-        }
-    },
-})
 </script>
 
 <template>
     <div class="dropdown">
-        <input readonly class="dropdown__input" />
-        <button class="dropdown__button" :class="buttonClasses" @click="handler"></button>
+        <button class="dropdown__button" :class="buttonClasses" @click="handler">{{ buttonText }}</button>
         <div class="dropdown__menu" :class="menuClasses">
             <slot></slot>
         </div>
@@ -36,28 +27,30 @@ export default defineComponent({
 <style scoped>
 .dropdown {
     position: relative;
-    width: 400px;
 }
     .dropdown__button {
-        position: absolute;
-        top: 12px;
-        right: 12px;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        padding: 16px 20px;
+        text-align: left;
+        background-color: #F6F6F6;
+    }
+    .dropdown__button::after {
+        content: '';
+        display: inline-block;
         width: 24px;
         height: 24px;
-        display: inline-block;
-        background: url('/icons/angle.png');
+        background: url('/icons/angle.png') no-repeat;
         transform: rotate(90deg);
     }
-    .dropdown__button--clicked {
+    .dropdown__button--clicked.dropdown__button::after {
         transform: rotate(270deg);
-    }
-    .dropdown__input {
-        width: 100%;
-        padding: 12px 16px;
     }
     .dropdown__menu {
         display: none;
-        position: absolute;
+        padding: 0 61px 16px 20px;
+        background-color: #F6F6F6;
     }
     .dropdown__menu--open {
         display: block;

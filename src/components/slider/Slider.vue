@@ -71,8 +71,8 @@ const slide = computed(() => slides[currSlideIndex.value])
             <div class="slide__actions">
                 <Button class="bg-main" :text="'Подробнее'" :handler="slide.handler" />
                 <div>
-                    <ButtonIcon class="slide__button" :icon="'/icons/angle.png'" :handler="decrement" />
-                    <ButtonIcon class="slide__button" :icon="'/icons/angle.png'" :handler="increment" />
+                    <ButtonIcon class="slide__button" :icon="'/icons/arrow.png'" :handler="decrement" />
+                    <ButtonIcon class="slide__button" :icon="'/icons/arrow.png'" :handler="increment" />
                 </div>
             </div>
         </section>
@@ -91,6 +91,8 @@ const slide = computed(() => slides[currSlideIndex.value])
     background-repeat: no-repeat;
 }
 .slide__button {
+    max-width: 52px;
+    max-height: 52px;
     background-color: var(--white);
     border: 1px solid var(--light-grey);
 }
@@ -113,7 +115,7 @@ const slide = computed(() => slides[currSlideIndex.value])
     margin-top: 96px;
     justify-content: space-between;
 }
-.slide__actions .button:first-child {
+.slide__actions .slide__button:first-child {
     margin-right: 12px;
 }
 </style>

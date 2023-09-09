@@ -1,4 +1,5 @@
 <script lang="ts" setup>
+import { onMounted } from 'vue';
     import { RouterLink } from 'vue-router'
     import SearchBox from '../../ui-kit/searchbox/SearchBox.vue'
     import ButtonWithIcon from '../../ui-kit/buttons/ButtonWithIcon.vue'
@@ -8,15 +9,25 @@
         const arr = [1,2,3,4,5,6]
         console.log(arr.slice(-1))
     }
+    onMounted(() => {
+        const middleRow = document.querySelector('.header__row--middle');
+        window.addEventListener('scroll', () => {
+            if(window.pageYOffset >= 44) {
+                middleRow.classList.add('position-fixed');
+            } else {
+                middleRow.classList.remove('position-fixed');
+            }
+        })
+    })
 </script>
 
 <template>
-    <header>
+    <header class="header">
         <div class="header__row header__row--top">
             <ButtonWithIcon style="font-size: 15px;" :icon="'/icons/metka.png'" :text="'Москва'" :handler="buttonHandler" />
             <nav>
                 <RouterLink :to="'/brands'" class="header__nav-item">Бренды</RouterLink>
-                <RouterLink :to="'/'" class="header__nav-item">Доставка</RouterLink>
+                <RouterLink :to="'/delivery'" class="header__nav-item">Доставка</RouterLink>
                 <RouterLink :to="'/'" class="header__nav-item">Возврат</RouterLink>
                 <RouterLink :to="'/'" class="header__nav-item">Документация</RouterLink>
                 <RouterLink :to="'/'" class="header__nav-item">Документация</RouterLink>
@@ -71,14 +82,18 @@
 }
 
 .header__row--middle {
+    max-width: 1440px;
+    width: 100%;
     padding: 16px 140px;
+    z-index: 99999;
+    background-color: white;
 }
 
 .header__logo {
     width: 180px;
     height: 46px;
     margin-right: auto;
-    background: url(/src/assets/logo.svg) no-repeat;
+    background: url('/src/assets/logo.svg') no-repeat;
     background-size: contain;
 }
 

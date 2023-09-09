@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import ContentBlock from './components/content-block/ContentBlock.vue';
 import CardList from '../modules/card-list/CardList.vue';
-import DescriptionPage from './components/description-page/DescriptionPage.vue';
+import PageDescription from './components/page-description/PageDescription.vue';
 import BrandNavigationList from '../modules/navigation-list/BrandNavigationList.vue';
 import CatalogNavigationList from '../modules/navigation-list/CatalogNavigationList.vue'
 import ButtonWithIcon from '../ui-kit/buttons/ButtonWithIcon.vue';
@@ -96,7 +96,7 @@ const items = [
 
 <template>
   <main>
-    <DescriptionPage class="main-top" :header="'Все бренды'" :backgroundImagePath="'/images/backgroundBrands.png'" :pathEnd="'Все продавцы'" />
+    <PageDescription class="main-top" :header="'Все бренды'" :backgroundImagePath="'/images/backgroundBrands.png'" :pathEnd="'Все продавцы'" />
     <ContentBlock>
       <div class="d-flex justify-between align-center m-b-16">
             <h2>Популярные бренды</h2>
