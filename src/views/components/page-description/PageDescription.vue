@@ -23,6 +23,9 @@ const props = defineProps({
 </template>
 
 <style scoped>
+h1 {
+    margin-bottom: 20px;
+}
     .description-page {
         padding: 40px 740px 90px 100px;
         background-size: cover;

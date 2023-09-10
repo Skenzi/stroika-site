@@ -28,9 +28,9 @@ import { onMounted } from 'vue';
             <nav>
                 <RouterLink :to="'/brands'" class="header__nav-item">Бренды</RouterLink>
                 <RouterLink :to="'/delivery'" class="header__nav-item">Доставка</RouterLink>
-                <RouterLink :to="'/'" class="header__nav-item">Возврат</RouterLink>
-                <RouterLink :to="'/'" class="header__nav-item">Документация</RouterLink>
-                <RouterLink :to="'/'" class="header__nav-item">Документация</RouterLink>
+                <RouterLink :to="'/refund'" class="header__nav-item">Возврат</RouterLink>
+                <RouterLink :to="'/documentation'" class="header__nav-item">Документация</RouterLink>
+                <RouterLink :to="'/contacts'" class="header__nav-item">Контакты</RouterLink>
             </nav>
         </div>
         <div class="header__row header__row--middle">

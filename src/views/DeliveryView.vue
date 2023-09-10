@@ -11,6 +11,7 @@ import FaqView from '../modules/faq/FaqView.vue'
       :header="'Доставка'"
       :backgroundImagePath="'/images/backgroundBrands.png'"
       :pathEnd="'Доставка'"
+      :description="'Доставка осуществляется курьерами поставщика или службой курьеров Достависта. Также товар можно забрать самостоятельно от поставщика'"
     />
     <ContentBlock>
       <h2>Как сделать заказ: 4 простых шага</h2>
