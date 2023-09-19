@@ -4,7 +4,7 @@
 
 <template>
     <div class="searchbox">
-        <input placeholder="Поиск" class="searchbox__input" />
+        <input placeholder="Поиск" class="input" />
         <button class="searchbox__button"></button>
     </div>
 </template>

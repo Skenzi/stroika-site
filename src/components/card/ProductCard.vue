@@ -30,7 +30,7 @@ const priceClasses = {
                 <span v-if="discountPrice !== 0">{{ discountPrice }}</span>
                 <span :class="priceClasses">{{ price }}</span>
             </div>
-            <Button class="body__button" :text="'В корзину'" />
+            <Button class="body__button">В корзину</Button>
         </div>
         <div class="product-card__dicount">{{ '-' + discount + '%' }}</div>
     </div>

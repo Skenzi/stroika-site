@@ -63,10 +63,19 @@ a {
   text-decoration: none;
   color: var(--bg-dark);
 }
-
+input {
+  background: none;
+  border: none;
+  color: var(--text-8-b-8-d-92, #8B8D92);
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 136%;
+}
 button {
   background: none;
   border: none;
   cursor: pointer;
   font-size: 18px;
+  font-weight: 500;
+  color: var(--dark);
 }

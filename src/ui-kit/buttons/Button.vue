@@ -1,15 +1,10 @@
-<script lang="ts">
-    export default {
-        props: {
-            text: String,
-            handler: { type: Function }
-        }
-    }
+<script lang="ts" setup>
+
 </script>
 
 <template>
-    <button class="button" v-on:click="handler">
-        {{text}}
+    <button class="button">
+        <slot></slot>
     </button>
 </template>
 

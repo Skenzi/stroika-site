@@ -7,7 +7,6 @@ import FaqView from '../modules/faq/FaqView.vue'
 <template>
   <main>
     <PageDescription
-      class="main-top"
       :header="'Доставка'"
       :backgroundImagePath="'/images/backgroundBrands.png'"
       :pathEnd="'Доставка'"

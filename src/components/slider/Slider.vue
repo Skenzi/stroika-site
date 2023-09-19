@@ -69,7 +69,7 @@ const slide = computed(() => slides[currSlideIndex.value])
                 </p>
             </div>
             <div class="slide__actions">
-                <Button class="bg-main" :text="'Подробнее'" :handler="slide.handler" />
+                <Button class="bg-main" :handler="slide.handler">Подробнее</Button>
                 <div>
                     <ButtonIcon class="slide__button" :icon="'/icons/arrow.png'" :handler="decrement" />
                     <ButtonIcon class="slide__button" :icon="'/icons/arrow.png'" :handler="increment" />

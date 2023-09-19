@@ -28,16 +28,16 @@ const sortedNavItems = computed(() => {
         <nav class="navigation-list__nav">
             <div class="navigation-list__wrapper">
                 <Button class="nav__item" :text="'Все'" :class="{ 'nav__item--active': sortNavMarker === ''}" :handler="() => sortNavMarker = ''">Все</Button>
-                <Button v-for="item in engNavItems" class="nav__item" :key="item" :text="item" :class="{ 'nav__item--active': sortNavMarker === item}" :handler="() => sortNavMarker = item" />
+                <Button v-for="item in engNavItems" class="nav__item" :key="item" :class="{ 'nav__item--active': sortNavMarker === item}" :handler="() => sortNavMarker = item">{{ item }}</Button>
             </div>
             <div class="navigation-list__wrapper">
-                <Button v-for="item in rusNavItems" class="nav__item" :key="item" :text="item" :class="{ 'nav__item--active': sortNavMarker === item}" :handler="() => sortNavMarker = item" />
+                <Button v-for="item in rusNavItems" class="nav__item" :key="item" :class="{ 'nav__item--active': sortNavMarker === item}" :handler="() => sortNavMarker = item">{{item}}</Button>
             </div>
         </nav>
         <section class="navigation-list__sublist" v-for="itemNav in sortedNavItems" :key="itemNav">
             <h2 class="sublist__header">{{ itemNav }}</h2>
             <div class="sublist__body">
-                <Button v-for="brand in sortedBrands[itemNav]" :key="brand" :text="brand" />
+                <Button v-for="brand in sortedBrands[itemNav]" :key="brand">{{brand}}</Button>
             </div>
         </section>
     </div>

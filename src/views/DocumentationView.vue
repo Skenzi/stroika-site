@@ -1,28 +1,28 @@
 <script lang="ts" setup>
 import ContentBlock from './components/content-block/ContentBlock.vue'
 import PageDescription from './components/page-description/PageDescription.vue'
+import DocumentCard from '../components/card/DocumentCard.vue'
 </script>
 
 <template>
   <main>
     <PageDescription
-      class="main-top"
       :header="'Документация'"
       :pathEnd="'Документация'"
     />
-    
+    <div class="container d-flex gap-16">
+      <DocumentCard />
+      <DocumentCard />
+      <DocumentCard />
+    </div>
   </main>
 </template>
 
 <style scoped>
-p:nth-child(1n+2) {
-    margin-top: 20px;
+.container {
+  padding-top: 40px;
 }
-.m-t-32 {
-    margin-top: 32px;
-}
-.step-container {
-    max-width: 278px;
-    font-weight: 500;
+.gap-16 {
+    gap: 16px;
 }
 </style>

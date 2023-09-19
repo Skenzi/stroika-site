@@ -4,15 +4,18 @@ import { onMounted } from 'vue';
     import SearchBox from '../../ui-kit/searchbox/SearchBox.vue'
     import ButtonWithIcon from '../../ui-kit/buttons/ButtonWithIcon.vue'
     import DividingLine from '../../ui-kit/line/DividingLine.vue'
+    import { useModalStore } from '../../stores/modal';
 
+    const modalStore = useModalStore();
     const buttonHandler = () => {
         const arr = [1,2,3,4,5,6]
         console.log(arr.slice(-1))
     }
     onMounted(() => {
         const middleRow = document.querySelector('.header__row--middle');
+        if(!middleRow) return;
         window.addEventListener('scroll', () => {
-            if(window.pageYOffset >= 44) {
+            if(window.pageYOffset >= 28) {
                 middleRow.classList.add('position-fixed');
             } else {
                 middleRow.classList.remove('position-fixed');
@@ -40,10 +43,10 @@ import { onMounted } from 'vue';
         </div>
         <ButtonWithIcon class="bg-main p-12-20" :icon="'/icons/catalogIcon.png'" :text="'Каталог'" :handler="buttonHandler" />
         <SearchBox class="m-l-16" />
-        <div class="header__actions m-l-16">
-            <ButtonWithIcon style="font-size: 15px;" class="flex-col" :icon="'/icons/profile.png'" :text="'Профиль'" :handler="buttonHandler" />
-            <ButtonWithIcon style="font-size: 15px;" class="flex-col" :icon="'/icons/order.png'" :text="'Заказы'" :handler="buttonHandler" />
-            <ButtonWithIcon style="font-size: 15px;" class="flex-col" :icon="'/icons/cart.png'" :text="'Корзина'" :handler="buttonHandler" />
+        <div class="header__actions">
+            <RouterLink :to="'/profile'" class="flex-col actions__item actions__item--profile">Профиль</RouterLink>
+            <RouterLink :to="'/'" class="flex-col actions__item actions__item--order">Заказы</RouterLink>
+            <RouterLink :to="'/'" class="flex-col actions__item actions__item--cart">Корзина</RouterLink>
         </div>
     </div>
     <DividingLine />
@@ -100,7 +103,27 @@ import { onMounted } from 'vue';
 .header__actions {
     display: flex;
 }
-
+.actions__item {
+    margin-left: 16px;
+    font-size: 15px;
+    text-align: center;
+}
+.actions__item::before {
+    content: '';
+    margin: 0 auto;
+    display: block;
+    width: 24px;
+    height: 24px;
+}
+.actions__item--profile::before {
+    background: url('/icons/profile.png') no-repeat;
+}
+.actions__item--order::before {
+    background: url('/icons/order.png') no-repeat;
+}
+.actions__item--cart::before {
+    background: url('/icons/cart.png') no-repeat;
+}
 .header__actions .button {
     padding-right: 16px;
 }

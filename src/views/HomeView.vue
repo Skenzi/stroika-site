@@ -146,7 +146,7 @@ let comments = [
       </div>
       <CardList :card-type="'brand'" :column="6" :items="items" />
     </ContentBlock>
-    <ContentBlock class="bg-light-grey">
+    <ContentBlock class="bg-light-grey overflow-x-hidden">
       <div class="d-flex justify-between align-center m-b-16">
             <h2>Отзывы</h2>
             <div>

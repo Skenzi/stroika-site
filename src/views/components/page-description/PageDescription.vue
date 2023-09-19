@@ -6,10 +6,13 @@ const props = defineProps({
     pathEnd: String,
     backgroundImagePath: String
 });
+const classes = {
+    'description-page--without-image': !props.backgroundImagePath,
+}
 </script>
 
 <template>
-    <section class="description-page m-40-40-0-40" :style="`background-image: url(${backgroundImagePath})`">
+    <section class="description-page m-40-40-0-40" :class="classes" :style="`background-image: url(${backgroundImagePath})`">
         <div class="description-page__path">
             <RouterLink :to="'/'">Главная</RouterLink>
             →
@@ -31,6 +34,10 @@ h1 {
         background-size: cover;
         background-repeat: no-repeat;
     }
+    .description-page--without-image {
+        padding: 0;
+        margin: 40px 140px 0 140px;
+}
     .description-page__path {
         margin-bottom: 20px;
     }

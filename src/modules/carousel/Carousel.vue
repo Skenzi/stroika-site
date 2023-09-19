@@ -62,7 +62,7 @@ export default {
 </script>
 
 <template>
-    <div class="carousel overflow-x-hidden" ref="rootCarousel">
+    <div class="carousel" ref="rootCarousel">
         <CommentCard v-for="item in items" :key="item.date" :avatar="item.avatarPath" :date="item.date" :name="item.name" :text="item.text" />
     </div>
 </template>
@@ -70,7 +70,6 @@ export default {
 <style scoped>
 .carousel {
     display: flex;
-    width: 100vw;
     gap: 16px;
 }
 </style>
