@@ -1,15 +1,31 @@
-<script lang="ts" setup>
-import Form from '../components/form/FormView.vue'
-import Button from '../ui-kit/buttons/Button.vue';
+<script lang="ts">
+import FormView from '../components/form/FormView.vue';
+import ButtonView from '../ui-kit/buttons/Button.vue';
+import { useModalStore } from '../stores/modal';
+const store = useModalStore();
+let user = 'sss';
+export default {
+    setup() {
+        return { store }
+    },
+    components: { FormView, ButtonView},
+    beforeRouteEnter(to, from, next) {
+        if(!user) {
+            store.changeModalState();
+            return;
+        }
+        return next();
+    }
+}
 </script>
 
 <template>
   <main>
     <section class="profile-wrapper">
         <h1>Личный кабинет</h1>
-        <div class="profile-form">
+        <div class="profile-form border-wrapper">
             <h2>Личная информация</h2>
-            <Form>
+            <FormView>
                 <div class="form-row">
                     <div class="form-group">
                         <label for="name" class="form-label">Имя</label>
@@ -46,10 +62,10 @@ import Button from '../ui-kit/buttons/Button.vue';
                         <input class="form-element input" id="password-repeat" type="password" placeholder="youmail@mail.com" />
                     </div>
                 </div>
-                <Button type="submit" @click="() => {console.log(123)}" class="bg-main m-t-24">
+                <ButtonView type="submit" @click="() => {console.log(123)}" class="bg-main m-t-24">
                     Сохранить
-                </Button>
-            </Form>
+                </ButtonView>
+            </FormView>
         </div>
     </section>
   </main>
@@ -61,7 +77,5 @@ import Button from '../ui-kit/buttons/Button.vue';
 }
 .profile-form {
     margin-top: 40px;
-    padding: 36px;
-    border: 1px solid #D1D1D3;
 }
 </style>

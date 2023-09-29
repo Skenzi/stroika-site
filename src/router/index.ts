@@ -37,7 +37,22 @@ const router = createRouter({
     {
       path: '/profile',
       name: 'profile',
-      component: () => import('../views/UserProfile.vue')
+      component: () => import('../views/UserProfile.vue'),
+    },
+    {
+      path: '/cataloge',
+      name: 'cataloge',
+      component: () => import('../views/CategoreCatalogeView.vue'),
+    },
+    {
+      path: '/cataloge/:categore',
+      name: 'product',
+      component: () => import('../views/ProductCatalogeView.vue')
+    },
+    {
+      path: '/:pathMatch(.*)*',
+      name: 'notFound',
+      component: () => import('../views/NotFoundView.vue')
     }
   ]
 })

@@ -41,7 +41,9 @@ import { onMounted } from 'vue';
             
 
         </div>
-        <ButtonWithIcon class="bg-main p-12-20" :icon="'/icons/catalogIcon.png'" :text="'Каталог'" :handler="buttonHandler" />
+        <ButtonWithIcon class="bg-main p-12-20" :icon="'/icons/catalogIcon.png'" :handler="buttonHandler">
+            <RouterLink :to="'/cataloge'">Каталог</RouterLink>
+        </ButtonWithIcon>
         <SearchBox class="m-l-16" />
         <div class="header__actions">
             <RouterLink :to="'/profile'" class="flex-col actions__item actions__item--profile">Профиль</RouterLink>

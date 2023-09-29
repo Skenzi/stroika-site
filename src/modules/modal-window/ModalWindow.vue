@@ -8,7 +8,7 @@ const modalStore = useModalStore();
 </script>
 
 <template>
-    <div :key="modalStore.modalType" class="modal-wrapper" v-if="!modalStore.isOpen">
+    <div :key="modalStore.modalType" class="modal-wrapper" v-if="modalStore.isOpen">
         <LoginContent v-if="modalStore.modalType === 'login'" />
         <RegistrationContent v-else-if="modalStore.modalType === 'registration'" />
         <SimpleContent v-else />

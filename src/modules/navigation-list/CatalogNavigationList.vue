@@ -1,11 +1,9 @@
 <script lang="ts" setup>
-import { ref, computed } from 'vue';
+import { ref } from 'vue';
 import Button from '../../ui-kit/buttons/Button.vue';
 import CategoryCard from '../../components/card/CategoryCard.vue';
-const props = defineProps({
-})
 const navItems = [
-'Профиль для гипсокартона', 'Профиль для гипсокартона1', 'Профиль для гипсокартона2', 'Профиль для гипсокартона3', 'Профиль для гипсокартона4', 'Профиль для гипсокартона5', 'Профиль для гипсокартона6'
+'A-progress.ru', 'A-progress.ru1', 'A-progress.ru2', 'Профиль для гипсокартона3', 'Профиль для гипсокартона4', 'Профиль для гипсокартона5', 'Профиль для гипсокартона6'
 ]
 const categoryItems = {
     'Сантехника': [
@@ -40,15 +38,18 @@ const sortNavMarker = ref('');
 <template>
     <div class="navigation-list">
         <nav class="navigation-list__nav">
-            <Button v-for="item in navItems" class="nav__item" :key="item" :text="item" :class="{ 'nav__item--active': sortNavMarker === item}" :handler="() => sortNavMarker = item" />
+            <Button v-for="item in navItems" class="nav__item" :key="item" :class="{ 'nav__item--active': sortNavMarker === item}" :handler="() => sortNavMarker = item">{{ item }}</Button>
         </nav>
         <div class="navigation-list__categories">
             <div class="navigation-list__category" v-for="category, categoryKey in categoryItems" :key="categoryKey">
-            <CategoryCard class="category__image" :image-path="'/images/cardImage.png'" :header="categoryKey" />
-            <div class="navigation-list__subcategories">
-                <Button v-for="brand in category" :key="brand" :text="brand" />
+                <RouterLink :to="{ name: 'product', params: { categore: categoryKey}}">
+                    <CategoryCard class="category__image" :image-path="'/images/cardImage.png'" :header="categoryKey" />
+                    <router-view></router-view>
+                </RouterLink>
+                <div class="navigation-list__subcategories">
+                    <Button v-for="brand in category" :key="brand">{{ brand }}</Button>
+                </div>
             </div>
-        </div>
         </div>
     </div>
 </template>

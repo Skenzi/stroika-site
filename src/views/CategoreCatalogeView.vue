@@ -1,9 +1,7 @@
 <script setup lang="ts">
 import ContentBlock from './components/content-block/ContentBlock.vue';
-import CardList from '../modules/card-list/CardList.vue';
 import PageDescription from './components/page-description/PageDescription.vue';
-import BrandNavigationList from '../modules/navigation-list/BrandNavigationList.vue';
-import ButtonWithIcon from '../ui-kit/buttons/ButtonWithIcon.vue';
+import CatalogNavigationList from '../modules/navigation-list/CatalogNavigationList.vue'
 
 const items = [
     {
@@ -95,19 +93,9 @@ const items = [
 
 <template>
   <main>
-    <PageDescription class="main-top" :header="'Все бренды'" :backgroundImagePath="'/images/backgroundBrands.png'" :pathEnd="'Все продавцы'" />
+    <PageDescription class="main-top" :header="'Каталог'" :backgroundImagePath="'/images/backgroundBrands.png'" :pathEnd="'Каталог'" />
     <ContentBlock>
-      <div class="d-flex justify-between align-center m-b-16">
-            <h2>Популярные бренды</h2>
-            <ButtonWithIcon class="p-12-16-12-24" :text="'Все бренды'" :icon="'/icons/angle.png'" :side="'after'" :handler="() => 'Hello'"  />
-      </div>
-      <CardList :card-type="'brand'" :column="6" :items="items" />
-    </ContentBlock>
-    <ContentBlock>
-      <BrandNavigationList :items="[
-'ASB-Woodline', 'ASB-Woodline', 'ASB-Woodline', 'ASB-Woodline', 'ASB-Woodline', 'ASB-Woodline', 'ASB-Woodline', 'ASB-Woodline', 'ASB-Woodline', 'ASB-Woodline', 'ASB-Woodline', 'К', 'Л', 'М', 'Н', 'О', 'П', 'Р', 'С', 'Т', 'У', 'Ф', 'Х', 'Ц', 'Ч', 'Ш', 'Щ', 'Ъ', 'Ы', 'Ь', 'Э', 'Ю', 'Я',
-'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'
-]" />
+      <CatalogNavigationList />
     </ContentBlock>
   </main>
 </template>

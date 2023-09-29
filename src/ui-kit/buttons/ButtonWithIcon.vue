@@ -12,7 +12,7 @@
 <template>
     <button class="button" v-on:click="handler">
         <img :class="[side === 'after' ? 'button__icon--after' : 'button__icon--before']" :src=icon alt="button-icon" />
-        <span>{{text}}</span>
+        <slot></slot>
     </button>
 </template>
 

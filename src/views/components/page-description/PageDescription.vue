@@ -1,5 +1,7 @@
 <script lang="ts" setup>
 import { RouterLink } from 'vue-router'
+import buildPath from '../../../features/buildPath';
+console.log(buildPath())
 const props = defineProps({
     description: String,
     header: { type: String , required: true },
