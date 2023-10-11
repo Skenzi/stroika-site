@@ -25,11 +25,4 @@
     top: 12px;
     right: 16px;
   }
-
-  .searchbox__input {
-    display: inline-block;
-    padding: 12px 16px;
-    width: 100%;
-    height: 100%;
-  }
 </style>

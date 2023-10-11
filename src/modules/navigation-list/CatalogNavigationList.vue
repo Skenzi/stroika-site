@@ -42,7 +42,7 @@ const sortNavMarker = ref('');
         </nav>
         <div class="navigation-list__categories">
             <div class="navigation-list__category" v-for="category, categoryKey in categoryItems" :key="categoryKey">
-                <RouterLink :to="{ name: 'product', params: { categore: categoryKey}}">
+                <RouterLink :to="{ name: 'category', params: { category: categoryKey}}">
                     <CategoryCard class="category__image" :image-path="'/images/cardImage.png'" :header="categoryKey" />
                     <router-view></router-view>
                 </RouterLink>

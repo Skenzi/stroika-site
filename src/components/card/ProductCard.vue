@@ -1,16 +1,19 @@
 <script lang="ts" setup>
 import Button from '../../ui-kit/buttons/Button.vue';
-
-const props = defineProps({
-    price: { type: Number, required: true},
+import { RouterLink } from 'vue-router';
+/*price: { type: Number, required: true},
     description: { type: String, required: true},
     imagePath: { type: String, required: true },
+    link: String,
     discount: Number,
-    position: String,
+    position: String,*/
+const props = defineProps({
+    item: { type: Object, required: true},
+    position: String
 })
 let discountPrice = 0;
-if(props.discount) {
-    discountPrice = (props.price * ((100 - props.discount) / 100)).toFixed(2);
+if(props.item.discount) {
+    discountPrice = (props.item.price * ((100 - props.item.discount) / 100)).toFixed(2);
 }
 const cardClasses = {
     'product-card--row': props.position === 'row',
@@ -23,16 +26,20 @@ const priceClasses = {
 
 <template>
     <div class="product-card" :class="cardClasses">
-        <div class="product-card__head"><img class="product-card__image" :src="imagePath" /></div>
+        <div class="product-card__head">
+            <RouterLink :to="'/'">
+                <img class="product-card__image" :src="item.imagePath" />
+            </RouterLink>
+        </div>
         <div class="product-card__body">
-            <div class="body__description">{{ description }}</div>
+            <div class="body__description">{{ item.description }}</div>
             <div class="body__price">
                 <span v-if="discountPrice !== 0">{{ discountPrice }}</span>
-                <span :class="priceClasses">{{ price }}</span>
+                <span :class="priceClasses">{{ item.price }}</span>
             </div>
             <Button class="body__button">В корзину</Button>
         </div>
-        <div class="product-card__dicount">{{ '-' + discount + '%' }}</div>
+        <div v-if="discountPrice !== 0" class="product-card__dicount">{{ '-' + item.discount + '%' }}</div>
     </div>
 </template>
 
@@ -43,10 +50,8 @@ const priceClasses = {
 .product-card {
     display: flex;
     position: relative;
-    flex: 1;
     flex-direction: column;
     flex-wrap: wrap;
-    flex-basis: 278px;
     border: 1px solid  #E8E9EA;
 }
 .product-card__dicount {

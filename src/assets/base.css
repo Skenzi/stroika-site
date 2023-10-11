@@ -58,6 +58,9 @@ p {
   font-size: inherit;
   font-weight: inherit;
 }
+ul, ol {
+  list-style-type: none;
+}
 a {
   text-decoration: none;
   color: var(--bg-dark);

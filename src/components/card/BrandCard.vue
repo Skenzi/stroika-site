@@ -1,19 +1,21 @@
 <script lang="ts" setup>
-
+import { RouterLink } from 'vue-router';
 defineProps({
-    imagePath: { type: String, required: true },
+    item: { type: Object, required: true},
+    position: String
 })
 </script>
 
 <template>
     <div class="brand-card">
-        <img :src="imagePath" alt="brand"/>
+        <RouterLink :to="'/'">
+            <img :src="item.imagePath" alt="brand"/>
+        </RouterLink>
     </div>
 </template>
 
 <style scoped>
 .brand-card {
-    flex: 1;
     border: 1px solid  #E8E9EA;
 }
 .brand-card img {

@@ -1,26 +1,26 @@
 <script lang="ts" setup>
-
-defineProps({
-    imagePath: { type: String, required: true },
-    header: { type: String, required: true}
+import { RouterLink } from 'vue-router';
+const props = defineProps({
+    item: { type: Object, required: true},
+    position: String
 })
 const headerText = 'Category'
 </script>
 
 <template>
     <div class="category-card">
-        <div class="category-card__header">{{ header || headerText }}</div>
-        <img :src="imagePath" class="category-card__image" />
+        <RouterLink :to="'/'">
+            <div class="category-card__header">{{ item.header || headerText }}</div>
+            <img :src="item.imagePath" class="category-card__image" />
+        </RouterLink>
     </div>
 </template>
 
 <style scoped>
 .category-card {
     display: flex;
-    flex: 1;
     flex-direction: column;
     flex-wrap: wrap;
-    flex-basis: 278px;
     border: none;
     background-color: #F6F6F6;;
 }

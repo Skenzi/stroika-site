@@ -6,14 +6,16 @@ export default defineComponent({
     setup(props) {
         let startValue = ref(props.start);
         let endValue = ref(props.end);
-        const allProz = props.end - props.start;
-        const proz = (allProz) / (props.step * 100);
-        return { proz, allProz, startValue, endValue }
+        const fullRange = props.end - props.start;
+        const percent = +((props.step * 100) / (fullRange)).toFixed(2);
+        return { percent, fullRange, startValue, endValue }
     },
     props: ['start', 'end', 'step'],
     methods: {
         movePoint(ev) {
             if (movementElement) {
+                const vektorStart = ev.movementX > 0 ? 1 : -1;
+                const vektorEnd = ev.movementX < 0 ? 1 : -1;
                 const typePoint = movementElement.dataset.point;
                 const valueLeft = +movementElement.style.left.slice(0, movementElement.style.left.length - 1);
                 const valueRight = +movementElement.style.right.slice(0, movementElement.style.right.length - 1);
@@ -26,21 +28,45 @@ export default defineComponent({
                     return;
                 }
                 if (typePoint === 'start') {
-                    const newValue = ev.movementX > 0 ? this.proz : this.proz * -1
-                    if((valueLeft + newValue < 0)) return;
+                    const newPositionValue = ev.movementX * this.percent
+                    if((valueLeft + newPositionValue < 0) || (valueLeft + newPositionValue > 100)) return;
                     if((+this.$refs.inputStart.value === +this.$refs.inputEnd.value) && ev.movementX >= 0) return
-                    movementElement.style.left = valueLeft + newValue + '%'
-                    this.$refs.inputStart.value = Math.round(this.allProz * ((valueLeft + newValue) / 100))
+                    movementElement.style.left = valueLeft + newPositionValue + '%'
+                    this.$refs.inputStart.value = Math.round(this.$props.end * ((valueLeft + newPositionValue) / 100)) < this.startValue ? this.startValue : Math.round(this.fullRange * ((valueLeft + newPositionValue) / 100))
                     this.$refs.rangeFill.style.left = movementElement.style.left
                 }
                 if (typePoint === 'end') {
-                    const newValue = ev.movementX > 0 ? this.proz * -1 : this.proz
+                    const newPositionValue = ev.movementX * -1 * this.percent
+                    if((valueRight + newPositionValue < 0) || (valueRight + newPositionValue > 100)) return;
+                    if((+this.$refs.inputStart.value === +this.$refs.inputEnd.value) && ev.movementX <= 0) return
+                    movementElement.style.right = valueRight + newPositionValue + '%'
+                    this.$refs.inputEnd.value = Math.round(this.$props.end * (1 - ((valueRight + newPositionValue) / 100)))
+                    this.$refs.rangeFill.style.right = movementElement.style.right
+                }
+                /*if (valueLeft < 0 && typePoint === 'start') {
+                    movementElement.style.left = 0 + '%'
+                    return
+                }
+                if (valueRight < 0 && typePoint === 'end') {
+                    movementElement.style.right = 0 + '%'
+                    return;
+                }
+                if (typePoint === 'start') {
+                    const newValue = ev.movementX > 0 ? this.percent : this.percent * -1
+                    if((valueLeft + newValue < 0)) return;
+                    if((+this.$refs.inputStart.value === +this.$refs.inputEnd.value) && ev.movementX >= 0) return
+                    movementElement.style.left = valueLeft + newValue + '%'
+                    this.$refs.inputStart.value = +this.$refs.inputStart.value + (ev.movementX > 0 ? this.step : this.step * -1) //Math.round(this.$props.end * ((valueLeft + newValue) / 100)) < this.startValue ? this.startValue : Math.round(this.fullRange * ((valueLeft + newValue) / 100))
+                    this.$refs.rangeFill.style.left = movementElement.style.left
+                }
+                if (typePoint === 'end') {
+                    const newValue = ev.movementX > 0 ? this.percent * -1 : this.percent
                     if((valueRight + newValue < 0)) return;
                     if((+this.$refs.inputStart.value === +this.$refs.inputEnd.value) && ev.movementX <= 0) return
                     movementElement.style.right = valueRight + newValue + '%'
-                    this.$refs.inputEnd.value = Math.round(this.allProz * (1 - ((valueRight + newValue) / 100)))
+                    this.$refs.inputEnd.value = +this.$refs.inputEnd.value + (ev.movementX > 0 ? this.step : this.step * -1) //Math.round(this.$props.end * (1 - ((valueRight + newValue) / 100)))
                     this.$refs.rangeFill.style.right = movementElement.style.right
-                }
+                }*/
             }
         },
         movedPoint(ev) {
@@ -50,23 +76,26 @@ export default defineComponent({
             };
             if(ev.target === this.$refs.inputStart) {
                 this.startValue = +ev.target.value;
-                if (+ev.target.value > this.$refs.inputEnd.value) {
+                if (this.startValue < this.$props.start) {
+                    this.startValue = this.$props.start
+                };
+                if (this.startValue > this.$refs.inputEnd.value) {
                     this.startValue = this.$refs.inputEnd.value
                 };
-                const newPositionPoint = this.startValue / (this.allProz / 100);
-                this.$refs.startPoint.style.left = newPositionPoint + '%';
-                this.$refs.rangeFill.style.left = newPositionPoint + '%'
+                const newPositionPoint = this.startValue === this.$props.start ? 0 : this.startValue / (this.fullRange / 100);
+                this.$refs.startPoint.style.left = newPositionPoint + 'px';
+                this.$refs.rangeFill.style.left = newPositionPoint + 'px'
             } else {
                 this.endValue = +ev.target.value;
-                if(+ev.target.value > this.allProz) {
-                    this.endValue = this.allProz
+                if(this.endValue > this.$props.end) {
+                    this.endValue = this.$props.end
                 }
-                if (+ev.target.value < this.$refs.inputStart.value) {
+                if (this.endValue < this.$refs.inputStart.value) {
                     this.endValue = this.$refs.inputStart.value
                 };
-                const newPositionPoint = 100 - this.endValue / (this.allProz / 100);
-                this.$refs.endPoint.style.right = newPositionPoint + '%';
-                this.$refs.rangeFill.style.right = newPositionPoint + '%'
+                const newPositionPoint = this.endValue === this.$props.end ? 0 : 100 - this.endValue / (this.fullRange / 100);
+                this.$refs.endPoint.style.right = newPositionPoint + 'px';
+                this.$refs.rangeFill.style.right = newPositionPoint + 'px'
             }
         },
         clearHandlerMove() {
@@ -87,11 +116,11 @@ export default defineComponent({
 
 <template>
     <div>
-        <div>
-            <input :value="startValue" ref="inputStart" @input="movedPoint" />
-            <input :value="endValue" ref="inputEnd" @input="movedPoint" />
+        <div class="d-flex gap-12">
+            <input class="input" :value="startValue" ref="inputStart" @change="movedPoint" />
+            <input class="input" :value="endValue" ref="inputEnd" @change="movedPoint" />
         </div>
-        <div class="range">
+        <div class="range m-t-12">
             <div @mousedown="startMovePoint" @mouseup="clearHandlerMove" data-point="start" ref="startPoint"
                 class="range__point range__point--start"></div>
             <div class="range__fill" ref="rangeFill"></div>
@@ -102,10 +131,15 @@ export default defineComponent({
 </template>
 
 <style scoped>
+.gap-12 {
+    gap: 12px;
+}
+.m-t-12 {
+    margin-top: 12px;
+}
 .range {
     position: relative;
-    width: 50%;
-    margin-left: 100px;
+    width: 100%;
     height: 8px;
     background-color: #E8E9EA;
 }

@@ -25,7 +25,7 @@ export default defineComponent({
 
 <template>
     <div class="dropdown">
-        <input readonly class="dropdown__input" />
+        <input readonly class="input" />
         <button class="dropdown__button" :class="buttonClasses" @click="handler"></button>
         <div class="dropdown__menu" :class="menuClasses">
             <slot></slot>
@@ -36,7 +36,7 @@ export default defineComponent({
 <style scoped>
 .dropdown {
     position: relative;
-    width: 400px;
+    width: 100%;
 }
     .dropdown__button {
         position: absolute;
@@ -51,13 +51,9 @@ export default defineComponent({
     .dropdown__button--clicked {
         transform: rotate(270deg);
     }
-    .dropdown__input {
-        width: 100%;
-        padding: 12px 16px;
-    }
     .dropdown__menu {
         display: none;
-        position: absolute;
+        width: 100%;
     }
     .dropdown__menu--open {
         display: block;
