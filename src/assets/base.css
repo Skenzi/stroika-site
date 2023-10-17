@@ -25,6 +25,7 @@
 *,
 *::before,
 *::after {
+  height: fit-content;
   font-family: Manrope;
   font-style: normal;
   box-sizing: border-box;

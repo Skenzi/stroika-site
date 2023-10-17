@@ -1,7 +1,15 @@
 <script lang="ts" setup>
+import { useRoute } from 'vue-router';
+import { useProductStore } from '../stores/productStore';
 import Button from '../ui-kit/buttons/Button.vue';
 import ContentBlock from './components/content-block/ContentBlock.vue';
+import CardList from '../modules/card-list/CardList.vue';
+import ProductCard from '../components/card/ProductCard.vue';
 import Counter from '../components/counter/Counter.vue';
+
+const { categories, products } = useProductStore()
+const route = useRoute()
+const items = products.slice(0, 4)
 </script>
 
 <template>
@@ -11,15 +19,15 @@ import Counter from '../components/counter/Counter.vue';
             <img src="/images/cardImage.png" />
             <div>
                 <h2>Шпатлевка масляно-клеевая 3кг Л-С</h2>
-                <div>В наличии</div>
-                <div>212 ₽</div>
-                <div>
-                    <Button class="bg-main">В корзину</Button>
-                    <Counter :product-id="'test'" />
+                <div class="available"><img src="/icons/check-circle.svg" width="24" height="24" />В наличии</div>
+                <div class="price">212 ₽</div>
+                <div class="d-flex">
+                    <Button class="bg-main flex-1">В корзину</Button>
+                    <Counter class="flex-2" :product-id="'test'" />
                 </div>
                 <div>Поставщик: Аксон</div>
                 <div>
-                    <img />
+                    <img src="/icons/car.svg" />
                     <span>Доставка осуществляется курьерами поставщика или службой курьеров Достависта. Также товар можно забрать самостоятельно от поставщика</span>
                 </div>
             </div>
@@ -74,10 +82,24 @@ import Counter from '../components/counter/Counter.vue';
         </section>
         <ContentBlock>
             <h2>Похожие товары</h2>
+            <CardList :column="4">
+                <ProductCard v-for="item in items" :link="{ name: 'product', params: { category: item.category, subcategory: item.subcategory, product: item.description}}" :key="item.id" :item="item" />
+            </CardList>
         </ContentBlock>
     </main>
 </template>
 
 <style scoped>
-
+.available {
+  display: flex;
+  margin: 12px 0;
+  color: #3BAA35;
+  gap: 5px;
+}
+.price {
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 130%;
+  margin-bottom: 24px;
+}
 </style>

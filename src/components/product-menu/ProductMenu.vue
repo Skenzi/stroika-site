@@ -11,7 +11,7 @@ import CheckBox from '../../ui-kit/checkbox/CheckBox.vue';
         <div class="border-wrapper border-wrapper--sm">
             <div>
                 <h3 class="m-b-12">Цена</h3>
-                <RangeInput :start="0" :end="100" :step="1" />
+                <RangeInput :start="10" :end="100" :step="10" />
             </div>
             <div class="m-t-32">
                 <h3 class="m-b-12">Бренд</h3>

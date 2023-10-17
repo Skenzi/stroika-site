@@ -9,6 +9,7 @@ import { RouterLink } from 'vue-router';
     position: String,*/
 const props = defineProps({
     item: { type: Object, required: true},
+    link: { type: Object, required: true},
     position: String
 })
 let discountPrice = 0;
@@ -27,7 +28,7 @@ const priceClasses = {
 <template>
     <div class="product-card" :class="cardClasses">
         <div class="product-card__head">
-            <RouterLink :to="'/'">
+            <RouterLink :to="link">
                 <img class="product-card__image" :src="item.imagePath" />
             </RouterLink>
         </div>

@@ -1,17 +1,18 @@
 <script lang="ts" setup>
 import { RouterLink } from 'vue-router';
-const props = defineProps({
-    item: { type: Object, required: true},
-    position: String
-})
-const headerText = 'Category'
+defineProps<{
+    header: string,
+    imagePath: string,
+    link: string | object,
+    position?: string
+}>()
 </script>
 
 <template>
     <div class="category-card">
-        <RouterLink :to="'/'">
-            <div class="category-card__header">{{ item.header || headerText }}</div>
-            <img :src="item.imagePath" class="category-card__image" />
+        <RouterLink :to="link">
+            <div class="category-card__header">{{ header }}</div>
+            <img :src="imagePath" class="category-card__image" />
         </RouterLink>
     </div>
 </template>
@@ -26,6 +27,10 @@ const headerText = 'Category'
 }
 .category-card__header {
     text-align: center;
+    padding: 12px 12px 16px 12px;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 136%;
 }
 .category-card__image {
     width: 100%;

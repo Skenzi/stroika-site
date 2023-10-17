@@ -5,36 +5,18 @@ const cartStore = useCartStore();
 const props = defineProps({
     productId: { type: String, required: true}
 })
-const productCount = cartStore.getProductCount(props.productId);
 </script>
 
 <template>
-    <div class="checkbox">
-        <ButtonIcon @click="cartStore.setProductToCart(productId, 1)" />
-        <div>{{ productCount }}</div>
-        <ButtonIcon @click="cartStore.setProductToCart(productId, -1)" />
+    <div class="d-flex w-full align-center">
+        <ButtonIcon class="p-12 d-flex" :icon="'/icons/plus.svg'" @click="cartStore.setProductToCart(productId, 1)" />
+        <div class="text-s-18">{{ cartStore.cart[productId] || 0 }}</div>
+        <ButtonIcon class="p-12 d-flex" :icon="'/icons/minus.svg'" @click="cartStore.setProductToCart(productId, -1)" />
     </div>
 </template>
 
 <style scoped>
-.checkbox {
-    display: flex;
-    gap: 8px;
-}
-.checkbox::before {
-    content: '';
-    display: inline-block;
-    width: 24px;
-    height: 24px;
-    background: url(/icons/checkbox.svg);
-}
-.checkbox__input {
-    display: none;
-}
-.checkbox:has(.checkbox__input:checked).checkbox::before {
-    background: url(/icons/checked.svg);
-}
-.checkbox__text {
-    
+.p-12 {
+    padding: 12px;
 }
 </style>

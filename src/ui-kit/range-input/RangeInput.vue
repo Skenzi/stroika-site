@@ -4,69 +4,35 @@ let movementElement: HTMLElement | null = null;
 
 export default defineComponent({
     setup(props) {
-        let startValue = ref(props.start);
+        const startValue = ref(props.start);
         let endValue = ref(props.end);
-        const fullRange = props.end - props.start;
-        const percent = +((props.step * 100) / (fullRange)).toFixed(2);
-        return { percent, fullRange, startValue, endValue }
+        const fullInterval = props.end - props.start;
+        return { fullInterval, startValue, endValue }
     },
     props: ['start', 'end', 'step'],
     methods: {
         movePoint(ev) {
             if (movementElement) {
-                const vektorStart = ev.movementX > 0 ? 1 : -1;
-                const vektorEnd = ev.movementX < 0 ? 1 : -1;
                 const typePoint = movementElement.dataset.point;
-                const valueLeft = +movementElement.style.left.slice(0, movementElement.style.left.length - 1);
-                const valueRight = +movementElement.style.right.slice(0, movementElement.style.right.length - 1);
-                if (valueLeft < 0 && typePoint === 'start') {
-                    movementElement.style.left = 0 + '%'
-                    return
-                }
-                if (valueRight < 0 && typePoint === 'end') {
-                    movementElement.style.right = 0 + '%'
-                    return;
-                }
+                const vektor = ev.movementX < 0 ? -1 : 1;
                 if (typePoint === 'start') {
-                    const newPositionValue = ev.movementX * this.percent
-                    if((valueLeft + newPositionValue < 0) || (valueLeft + newPositionValue > 100)) return;
-                    if((+this.$refs.inputStart.value === +this.$refs.inputEnd.value) && ev.movementX >= 0) return
-                    movementElement.style.left = valueLeft + newPositionValue + '%'
-                    this.$refs.inputStart.value = Math.round(this.$props.end * ((valueLeft + newPositionValue) / 100)) < this.startValue ? this.startValue : Math.round(this.fullRange * ((valueLeft + newPositionValue) / 100))
-                    this.$refs.rangeFill.style.left = movementElement.style.left
+                    let newValue = this.startValue + (this.step * vektor);
+                    if(newValue < this.start) newValue = this.start
+                    if(newValue > this.end) newValue = this.end
+                    const newPosition = ((newValue - this.start) / this.fullInterval * 100) +'%'
+                    movementElement.style.left = newPosition
+                    this.$refs.rangeFill.style.left = newPosition
+                    this.startValue = newValue
                 }
                 if (typePoint === 'end') {
-                    const newPositionValue = ev.movementX * -1 * this.percent
-                    if((valueRight + newPositionValue < 0) || (valueRight + newPositionValue > 100)) return;
-                    if((+this.$refs.inputStart.value === +this.$refs.inputEnd.value) && ev.movementX <= 0) return
-                    movementElement.style.right = valueRight + newPositionValue + '%'
-                    this.$refs.inputEnd.value = Math.round(this.$props.end * (1 - ((valueRight + newPositionValue) / 100)))
-                    this.$refs.rangeFill.style.right = movementElement.style.right
+                    let newValue = this.endValue + (this.step * vektor);
+                    if(newValue < this.start) newValue = this.start
+                    if(newValue > this.end) newValue = this.end
+                    const newPosition = ((this.end - newValue) / this.fullInterval * 100) +'%'
+                    movementElement.style.right = newPosition
+                    this.$refs.rangeFill.style.right = newPosition
+                    this.endValue = newValue
                 }
-                /*if (valueLeft < 0 && typePoint === 'start') {
-                    movementElement.style.left = 0 + '%'
-                    return
-                }
-                if (valueRight < 0 && typePoint === 'end') {
-                    movementElement.style.right = 0 + '%'
-                    return;
-                }
-                if (typePoint === 'start') {
-                    const newValue = ev.movementX > 0 ? this.percent : this.percent * -1
-                    if((valueLeft + newValue < 0)) return;
-                    if((+this.$refs.inputStart.value === +this.$refs.inputEnd.value) && ev.movementX >= 0) return
-                    movementElement.style.left = valueLeft + newValue + '%'
-                    this.$refs.inputStart.value = +this.$refs.inputStart.value + (ev.movementX > 0 ? this.step : this.step * -1) //Math.round(this.$props.end * ((valueLeft + newValue) / 100)) < this.startValue ? this.startValue : Math.round(this.fullRange * ((valueLeft + newValue) / 100))
-                    this.$refs.rangeFill.style.left = movementElement.style.left
-                }
-                if (typePoint === 'end') {
-                    const newValue = ev.movementX > 0 ? this.percent * -1 : this.percent
-                    if((valueRight + newValue < 0)) return;
-                    if((+this.$refs.inputStart.value === +this.$refs.inputEnd.value) && ev.movementX <= 0) return
-                    movementElement.style.right = valueRight + newValue + '%'
-                    this.$refs.inputEnd.value = +this.$refs.inputEnd.value + (ev.movementX > 0 ? this.step : this.step * -1) //Math.round(this.$props.end * (1 - ((valueRight + newValue) / 100)))
-                    this.$refs.rangeFill.style.right = movementElement.style.right
-                }*/
             }
         },
         movedPoint(ev) {
@@ -76,26 +42,20 @@ export default defineComponent({
             };
             if(ev.target === this.$refs.inputStart) {
                 this.startValue = +ev.target.value;
-                if (this.startValue < this.$props.start) {
-                    this.startValue = this.$props.start
-                };
-                if (this.startValue > this.$refs.inputEnd.value) {
-                    this.startValue = this.$refs.inputEnd.value
-                };
-                const newPositionPoint = this.startValue === this.$props.start ? 0 : this.startValue / (this.fullRange / 100);
-                this.$refs.startPoint.style.left = newPositionPoint + 'px';
-                this.$refs.rangeFill.style.left = newPositionPoint + 'px'
+                if (this.startValue < this.start) this.startValue = this.start
+                if (this.startValue > this.end) this.startValue = this.end
+                
+                const newPositionPoint = ((this.startValue - this.start) / this.fullInterval * 100) +'%';
+                this.$refs.startPoint.style.left = newPositionPoint;
+                this.$refs.rangeFill.style.left = newPositionPoint
             } else {
                 this.endValue = +ev.target.value;
-                if(this.endValue > this.$props.end) {
-                    this.endValue = this.$props.end
-                }
-                if (this.endValue < this.$refs.inputStart.value) {
-                    this.endValue = this.$refs.inputStart.value
-                };
-                const newPositionPoint = this.endValue === this.$props.end ? 0 : 100 - this.endValue / (this.fullRange / 100);
-                this.$refs.endPoint.style.right = newPositionPoint + 'px';
-                this.$refs.rangeFill.style.right = newPositionPoint + 'px'
+                if(this.endValue > this.end) this.endValue = this.end
+                if (this.endValue < this.start) this.endValue = this.start
+
+                const newPositionPoint = ((this.end - this.endValue) / this.fullInterval * 100) +'%';
+                this.$refs.endPoint.style.right = newPositionPoint;
+                this.$refs.rangeFill.style.right = newPositionPoint
             }
         },
         clearHandlerMove() {

@@ -126,6 +126,9 @@
 .text-center {
   text-align: center;
 }
+.text-s-18 {
+  font-size: 18px;
+}
 .line {
   height: 1px;
   background-color: white;

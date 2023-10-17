@@ -25,7 +25,7 @@ export default defineComponent({
 
 <template>
     <div class="dropdown">
-        <input readonly class="input" />
+        <input readonly @click="handler" class="input" />
         <button class="dropdown__button" :class="buttonClasses" @click="handler"></button>
         <div class="dropdown__menu" :class="menuClasses">
             <slot></slot>

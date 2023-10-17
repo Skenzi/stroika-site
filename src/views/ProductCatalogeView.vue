@@ -1,59 +1,20 @@
 <script lang="ts" setup>
-import { RouterLink } from 'vue-router';
+import { useRoute } from 'vue-router';
+import { useProductStore } from '../stores/productStore';
 import ProductCard from '../components/card/ProductCard.vue';
 import PageDescription from './components/page-description/PageDescription.vue';
 import ProductMenu from '../components/product-menu/ProductMenu.vue';
 import CardList from '../modules/card-list/CardList.vue';
 import Button from '../ui-kit/buttons/Button.vue';
-import buildPath from '../features/buildPath';
-const paths = buildPath();
-const items = [{
-      "id": "001",
-      "description": "Product A",
-      "price": 19.99,
-      "discount": 15,
-      imagePath: '/images/cardImage.png'
-    },
-    {
-      "id": "002",
-      "description": "Product B",
-      "price": 9.99,
-      "discount": 10,
-      imagePath: '/images/cardImage.png'
-    },
-    {
-      "id": "003",
-      "description": "Product C",
-      "price": 24.99,
-      "discount": 20,
-      imagePath: '/images/cardImage.png'
-    },
-    {
-      "id": "004",
-      "description": "Product A",
-      "price": 19.99,
-      "discount": 15,
-      imagePath: '/images/cardImage.png'
-    },
-    {
-      "id": "005",
-      "description": "Product B",
-      "price": 9.99,
-      "discount": 10,
-      imagePath: '/images/cardImage.png'
-    },
-    {
-      "id": "006",
-      "description": "Product C",
-      "price": 24.99,
-      "discount": 20,
-      imagePath: '/images/cardImage.png'
-    },]
+const { categories, products } = useProductStore();
+const route = useRoute()
+const headerText = categories[route.params.category].name;
+const items = products
 </script>
 
 <template>
     <main>
-        <PageDescription :header="'Сухие смеси'" />
+        <PageDescription :header="headerText" />
         <div class="d-flex gap-16 p-0-140-80-140">
             <ProductMenu />
             <div>
@@ -64,7 +25,7 @@ const items = [{
                     <Button>Популярные</Button>
                 </div>
                 <CardList class="m-t-16" :column="3" :card-type="'product'" :items="items">
-                  <ProductCard v-for="item in items" :key="items.id" :item="item" />
+                  <ProductCard v-for="item in items" :link="{ name: 'product', params: { category: item.category, subcategory: item.subcategory, product: item.description}}" :key="items.id" :item="item" />
                 </CardList>
             </div>
         </div>

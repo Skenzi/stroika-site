@@ -50,7 +50,12 @@ const router = createRouter({
       component: () => import('../views/ProductCatalogeView.vue')
     },
     {
-      path: '/cataloge/:category/:product',
+      path: '/cataloge/:category',
+      name: 'subcategory',
+      component: () => import('../views/ProductCatalogeView.vue')
+    },
+    {
+      path: '/cataloge/:category/:subcategory/:product',
       name: 'product',
       component: () => import('../views/ProductInfoView.vue')
     },
@@ -58,7 +63,7 @@ const router = createRouter({
       path: '/:pathMatch(.*)*',
       name: 'notFound',
       component: () => import('../views/NotFoundView.vue')
-    }
+    },
   ]
 })
 

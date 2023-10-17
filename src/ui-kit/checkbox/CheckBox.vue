@@ -3,16 +3,17 @@
 </script>
 
 <template>
-    <div class="checkbox">
+    <label class="checkbox">
         <input class="checkbox__input" type="checkbox" id="name" name="name" />
-        <label class="checkbox__text" for="name">Name</label>
-    </div>
+        <span class="checkbox__text" for="name">Name</span>
+    </label>
 </template>
 
 <style scoped>
 .checkbox {
     display: flex;
     gap: 8px;
+    cursor: pointer;
 }
 .checkbox::before {
     content: '';

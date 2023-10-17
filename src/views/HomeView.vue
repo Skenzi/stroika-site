@@ -9,119 +9,12 @@ import ProductCard from '../components/card/ProductCard.vue';
 import CategoryCard from '../components/card/CategoryCard.vue';
 import BrandCard from '../components/card/BrandCard.vue';
 import AboutCompany from './components/about-company/AboutCompany.vue';
-
-const items = [
-    {
-      "id": "001",
-      "description": "Product A",
-      "price": 19.99,
-      "discount": 15,
-      imagePath: '/images/cardImage.png'
-    },
-    {
-      "id": "002",
-      "description": "Product B",
-      "price": 9.99,
-      "discount": 10,
-      imagePath: '/images/cardImage.png'
-    },
-    {
-      "id": "003",
-      "description": "Product C",
-      "price": 24.99,
-      "discount": 20,
-      imagePath: '/images/cardImage.png'
-    },
-    {
-      "id": "004",
-      "description": "Product A",
-      "price": 19.99,
-      "discount": 15,
-      imagePath: '/images/cardImage.png'
-    },
-    {
-      "id": "005",
-      "description": "Product B",
-      "price": 9.99,
-      "discount": 10,
-      imagePath: '/images/cardImage.png'
-    },
-    {
-      "id": "006",
-      "description": "Product C",
-      "price": 24.99,
-      "discount": 20,
-      imagePath: '/images/cardImage.png'
-    },
-    {
-      "id": "007",
-      "description": "Product A",
-      "price": 19.99,
-      "discount": 15,
-      imagePath: '/images/cardImage.png'
-    },
-    {
-      "id": "008",
-      "description": "Product B",
-      "price": 9.99,
-      "discount": 10,
-      imagePath: '/images/cardImage.png'
-    },
-    {
-      "id": "009",
-      "description": "Product C",
-      "price": 24.99,
-      "discount": 20,
-      imagePath: '/images/cardImage.png'
-    },
-    {
-      "id": "010",
-      "description": "Product A",
-      "price": 19.99,
-      "discount": 15,
-      imagePath: '/images/cardImage.png'
-    },
-    {
-      "id": "011",
-      "description": "Product B",
-      "price": 9.99,
-      "discount": 10,
-      imagePath: '/images/cardImage.png'
-    },
-    {
-      "id": "012",
-      "description": "Product C",
-      "price": 24.99,
-      "discount": 20,
-      imagePath: '/images/cardImage.png'
-    }
-  ]
-let comments = [
-  {
-    name: "John",
-    text: "Сегодня 10.03.2022 года, брал перфоратор в аренду в магазине по улице Дорожная. Продавец всё хорошо объяснил, показал и плюс остался бонус в ящике перфоратора это бур нужного мне диаметра, оставленным прежним арендатором. В общем повесил телевизор, где надо было просверлить 4 отверстия, всего за 100 ₽",
-    avatarPath: "/avatars/Avatars.svg",
-    date: "2022-01-01",
-  },
-  {
-    name: "Emma",
-    text: "I'm doing great, thank you!",
-    avatarPath: "/avatars/Avatars.svg",
-    date: "2022-01-02",
-  },
-  {
-    name: "Michael",
-    text: "Hey, what's up?",
-    avatarPath: "/avatars/Avatars.svg",
-    date: "2022-01-03",
-  },
-  {
-    name: "Sarah",
-    text: "Сегодня 10.03.2022 года, брал перфоратор в аренду в магазине по улице Дорожная. Продавец всё хорошо объяснил, показал и плюс остался бонус в ящике перфоратора это бур нужного мне диаметра, оставленным прежним арендатором. В общем повесил телевизор, где надо было просверлить 4 отверстия, всего за 100 ₽",
-    avatarPath:  "/avatars/Avatars.svg",
-    date: "2022-01-20",
-  }
-];
+import { useProductStore } from '../stores/productStore';
+import { useCommentsStore } from '../stores/commentsStore';
+const productStore = useProductStore();
+const commentStore = useCommentsStore();
+const items = productStore.products
+const comments = commentStore.comments
 </script>
 
 <template>
@@ -133,19 +26,19 @@ let comments = [
             <ButtonWithIcon class="bg-main p-12-16-12-24" :icon="'/icons/angle.png'" :side="'after'" :handler="() => 'Hello'">Все акции</ButtonWithIcon>
       </div>
       <CardList :card-type="'product'" :column="2">
-        <ProductCard v-for="item in items" :key="item.id" :item="item" />
+        <ProductCard v-for="item in items.slice(0, 4)" :link="{ name: 'product', params: { category: item.category, subcategory: item.subcategory, product: item.description}}" :key="item.id" :item="item" />
       </CardList>
     </ContentBlock>
     <ContentBlock>
       <h2 class="m-b-16">Популярные категории</h2>
       <CardList :card-type="'category'" :column="6">
-        <CategoryCard v-for="item in items" :key="item.id" :item="item" />
+        <CategoryCard v-for="item in items" :key="item.id" :link="{ name: 'category', params: { category: 'tools'}}" :header="item.description" :image-path="item.imagePath" />
       </CardList>
     </ContentBlock>
     <ContentBlock>
       <h2 class="m-b-16">Популярные товары</h2>
       <CardList :card-type="'product'" :column="4">
-        <ProductCard v-for="item in items" :key="item.id" :item="item" />
+        <ProductCard v-for="item in items.slice(0, 8)" :link="{ name: 'product', params: { category: item.category, subcategory: item.subcategory, product: item.description}}" :key="item.id" :item="item" />
       </CardList>
     </ContentBlock>
     <ContentBlock>

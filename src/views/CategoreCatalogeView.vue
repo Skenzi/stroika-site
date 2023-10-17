@@ -93,7 +93,7 @@ const items = [
 
 <template>
   <main>
-    <PageDescription class="main-top" :header="'Каталог'" :backgroundImagePath="'/images/backgroundBrands.png'" :pathEnd="'Каталог'" />
+    <PageDescription class="main-top" :header="'Каталог'" :backgroundImagePath="'/images/backgroundBrands.png'" />
     <ContentBlock>
       <CatalogNavigationList />
     </ContentBlock>

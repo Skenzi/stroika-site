@@ -43,7 +43,7 @@ export default {
     props: {
         toLeftId: { type: String, required: true },
         toRightId: { type: String, required: true },
-        items: { type: Array<typeof CommentCard>, required: true }
+        items: { type: Object, required: true }
     },
     setup(props) {
         onMounted(() => {

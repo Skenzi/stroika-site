@@ -17,6 +17,9 @@
  .button {
     padding: 14px;
  }
+ .button__icon {
+    height: 100%;
+ }
  .button--border {
     border: 1px solid var(--light-grey);
  }

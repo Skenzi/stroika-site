@@ -1,37 +1,13 @@
 <script lang="ts" setup>
 import { ref } from 'vue';
+import { RouterLink } from 'vue-router';
 import Button from '../../ui-kit/buttons/Button.vue';
 import CategoryCard from '../../components/card/CategoryCard.vue';
+import { useProductStore } from '../../stores/productStore';
 const navItems = [
 'A-progress.ru', 'A-progress.ru1', 'A-progress.ru2', 'Профиль для гипсокартона3', 'Профиль для гипсокартона4', 'Профиль для гипсокартона5', 'Профиль для гипсокартона6'
 ]
-const categoryItems = {
-    'Сантехника': [
-'Профиль для гипсокартона', 'Профиль для гипсокартона', 'Профиль для гипсокартона', 'Профиль для гипсокартона', 'Профиль для гипсокартона', 'Профиль для гипсокартона', 'Профиль для гипсокартона'
-],
-'Сантехника1': [
-'Профиль для гипсокартона', 'Профиль для гипсокартона', 'Профиль для гипсокартона', 'Профиль для гипсокартона', 'Профиль для гипсокартона', 'Профиль для гипсокартона', 'Профиль для гипсокартона'
-],
-'Сантехника2': [
-'Профиль для гипсокартона', 'Профиль для гипсокартона', 'Профиль для гипсокартона', 'Профиль для гипсокартона', 'Профиль для гипсокартона', 'Профиль для гипсокартона', 'Профиль для гипсокартона'
-],
-'Сантехника3': [
-'Профиль для гипсокартона', 'Профиль для гипсокартона', 'Профиль для гипсокартона', 'Профиль для гипсокартона', 'Профиль для гипсокартона', 'Профиль для гипсокартона', 'Профиль для гипсокартона'
-],
-'Сантехника4': [
-'Профиль для гипсокартона', 'Профиль для гипсокартона', 'Профиль для гипсокартона', 'Профиль для гипсокартона', 'Профиль для гипсокартона', 'Профиль для гипсокартона', 'Профиль для гипсокартона'
-],
-'Сантехника5': [
-'Профиль для гипсокартона', 'Профиль для гипсокартона', 'Профиль для гипсокартона', 'Профиль для гипсокартона', 'Профиль для гипсокартона', 'Профиль для гипсокартона', 'Профиль для гипсокартона'
-],
-'Сантехника6': [
-'Профиль для гипсокартона', 'Профиль для гипсокартона', 'Профиль для гипсокартона', 'Профиль для гипсокартона', 'Профиль для гипсокартона', 'Профиль для гипсокартона', 'Профиль для гипсокартона'
-],
-'Сантехника7': [
-'Профиль для гипсокартона', 'Профиль для гипсокартона', 'Профиль для гипсокартона', 'Профиль для гипсокартона', 'Профиль для гипсокартона', 'Профиль для гипсокартона', 'Профиль для гипсокартона'
-]
-}
-
+const productStore = useProductStore();
 const sortNavMarker = ref('');
 </script>
 
@@ -41,13 +17,12 @@ const sortNavMarker = ref('');
             <Button v-for="item in navItems" class="nav__item" :key="item" :class="{ 'nav__item--active': sortNavMarker === item}" :handler="() => sortNavMarker = item">{{ item }}</Button>
         </nav>
         <div class="navigation-list__categories">
-            <div class="navigation-list__category" v-for="category, categoryKey in categoryItems" :key="categoryKey">
-                <RouterLink :to="{ name: 'category', params: { category: categoryKey}}">
-                    <CategoryCard class="category__image" :image-path="'/images/cardImage.png'" :header="categoryKey" />
-                    <router-view></router-view>
-                </RouterLink>
+            <div class="navigation-list__category" v-for="category, categoryKey in productStore.categories" :key="categoryKey">
+                <CategoryCard class="category__image" :image-path="'/images/cardImage.png'" :link="{ name: 'category', params: { category: categoryKey}}" :header="category.name" />
                 <div class="navigation-list__subcategories">
-                    <Button v-for="brand in category" :key="brand">{{ brand }}</Button>
+                    <div v-for="subcategory in category.subcategories" :key="subcategory" class="w-full">
+                        <RouterLink :to="'/'">{{ subcategory }}</RouterLink>
+                    </div>
                 </div>
             </div>
         </div>
@@ -60,19 +35,6 @@ const sortNavMarker = ref('');
     flex-wrap: wrap;
     gap: 8px;
 }
-.navigation-list__sublist {
-    display: flex;
-    padding: 28px 0px;
-}
-.navigation-list__sublist:nth-of-type(1n+2) {
-    border-top: 1px solid #E8E9EA;
-}
-.navigation-list__sublist:last-of-type {
-    padding-bottom: 0;
-}
-.sublist__header {
-    flex: 1;
-}
 .navigation-list__subcategories .button {
     padding: 0;
     text-align: left;
@@ -84,6 +46,7 @@ const sortNavMarker = ref('');
     height: 16px;
     margin-right: 4px;
     background: url('/icons/arrow.png');
+    transform: rotate(180deg);
     background-size: contain;
 }
 .navigation-list__subcategories .button:nth-of-type(1n+2) {
