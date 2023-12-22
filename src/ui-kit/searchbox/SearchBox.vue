@@ -12,7 +12,7 @@
 <style scoped>
   .searchbox {
     display: inline-block;
-    max-width: 444px;
+    width: 100%;
     flex: 1;
     position: relative;
   }

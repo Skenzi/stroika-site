@@ -3,11 +3,9 @@
 </script>
 
 <template>
-    <div class="modal-wrapper">
-        <form>
-            <slot></slot>
-        </form>
-    </div>
+    <form>
+        <slot></slot>
+    </form>
 </template>
 
 <style>

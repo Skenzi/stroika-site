@@ -3,6 +3,7 @@ import { ref } from 'vue';
 import { RouterLink } from 'vue-router';
 import Button from '../../ui-kit/buttons/Button.vue';
 import CategoryCard from '../../components/card/CategoryCard.vue';
+import WrapperArrow from '../../ui-kit/wrapperArrow/WrapperArrow.vue';
 import { useProductStore } from '../../stores/productStore';
 const navItems = [
 'A-progress.ru', 'A-progress.ru1', 'A-progress.ru2', 'Профиль для гипсокартона3', 'Профиль для гипсокартона4', 'Профиль для гипсокартона5', 'Профиль для гипсокартона6'
@@ -21,7 +22,9 @@ const sortNavMarker = ref('');
                 <CategoryCard class="category__image" :image-path="'/images/cardImage.png'" :link="{ name: 'category', params: { category: categoryKey}}" :header="category.name" />
                 <div class="navigation-list__subcategories">
                     <div v-for="subcategory in category.subcategories" :key="subcategory" class="w-full">
-                        <RouterLink :to="'/'">{{ subcategory }}</RouterLink>
+                        <WrapperArrow>
+                            <RouterLink :to="{ name: 'subcategory', params: { category: categoryKey, subcategory}}">{{ subcategory }}</RouterLink>
+                        </WrapperArrow>
                     </div>
                 </div>
             </div>
@@ -38,16 +41,6 @@ const sortNavMarker = ref('');
 .navigation-list__subcategories .button {
     padding: 0;
     text-align: left;
-}
-.navigation-list__subcategories .button:hover::before {
-    content: '';
-    display: inline-block;
-    width: 16px;
-    height: 16px;
-    margin-right: 4px;
-    background: url('/icons/arrow.png');
-    transform: rotate(180deg);
-    background-size: contain;
 }
 .navigation-list__subcategories .button:nth-of-type(1n+2) {
     margin-top: 12px;

@@ -10,7 +10,7 @@ import DocumentCard from '../components/card/DocumentCard.vue'
       :header="'Документация'"
       :pathEnd="'Документация'"
     />
-    <div class="container d-flex gap-16">
+    <div class="container container--all d-flex gap-16">
       <DocumentCard />
       <DocumentCard />
       <DocumentCard />

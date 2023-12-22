@@ -8,7 +8,7 @@ import CardList from '../modules/card-list/CardList.vue';
 import Button from '../ui-kit/buttons/Button.vue';
 const { categories, products } = useProductStore();
 const route = useRoute()
-const headerText = categories[route.params.category].name;
+const headerText = route.params.category;
 const items = products
 </script>
 

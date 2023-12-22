@@ -50,7 +50,7 @@ const router = createRouter({
       component: () => import('../views/ProductCatalogeView.vue')
     },
     {
-      path: '/cataloge/:category',
+      path: '/cataloge/:category/:subcategory',
       name: 'subcategory',
       component: () => import('../views/ProductCatalogeView.vue')
     },

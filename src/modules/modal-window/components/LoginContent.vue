@@ -7,7 +7,7 @@ const modalStore = useModalStore();
 
 <template>
         <div class="modal">
-            <h2>Вход</h2>
+            <h2 class="modal__header">Вход</h2>
             <Form>
                 <div class="form-group m-t-24">
                     <label for="email" class="form-label">E-mail</label>
@@ -31,6 +31,9 @@ const modalStore = useModalStore();
 </template>
 
 <style scoped>
+.modal {
+    max-width: 376px;
+}
 .form-link {
     display: block;
     color: #5D6066;

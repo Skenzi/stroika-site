@@ -94,7 +94,7 @@ const items = [
 <template>
   <main>
     <PageDescription class="main-top" :header="'Каталог'" :backgroundImagePath="'/images/backgroundBrands.png'" />
-    <ContentBlock>
+    <ContentBlock class="container--all">
       <CatalogNavigationList />
     </ContentBlock>
   </main>

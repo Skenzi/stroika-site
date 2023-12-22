@@ -6,7 +6,7 @@ import Button from '../../../ui-kit/buttons/Button.vue';
 
 <template>
         <div class="modal">
-            <h2>Регистрация</h2>
+            <h2 class="modal__header">Регистрация</h2>
             <Form>
                 <div class="form-row m-t-24">
                     <div class="form-group">

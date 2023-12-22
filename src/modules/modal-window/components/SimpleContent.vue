@@ -7,9 +7,9 @@ const modalStore = useModalStore();
 
 <template>
         <div class="modal">
-            <h2>{{ modalStore.modalHeader }}</h2>
+            <h2 class="modal__header">{{ modalStore.modalHeader }}</h2>
             <div>{{ modalStore.modalText }}</div>
-            <Button>
+            <Button @click="modalStore.changeModalState">
                 Понял
             </Button>
         </div>
