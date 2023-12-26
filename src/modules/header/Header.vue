@@ -98,8 +98,8 @@ onMounted(() => {
                 <SearchBox class="m-l-16" />
                 <div class="header__actions">
                     <RouterLink :to="'/profile'" class="flex-col actions__item actions__item--profile">Профиль</RouterLink>
-                    <RouterLink :to="'/'" class="flex-col actions__item actions__item--order">Заказы</RouterLink>
-                    <RouterLink :to="'/'" class="flex-col actions__item actions__item--cart">Корзина</RouterLink>
+                    <RouterLink :to="'/orders'" class="flex-col actions__item actions__item--order">Заказы</RouterLink>
+                    <RouterLink :to="'/cart'" class="flex-col actions__item actions__item--cart">Корзина</RouterLink>
                 </div>
             </div>
         

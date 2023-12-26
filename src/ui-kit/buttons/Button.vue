@@ -1,9 +1,13 @@
-<script lang="ts" setup>
-
+<script lang="ts">
+export default {
+        props: {
+            handler: { type: Function },
+        }
+    }
 </script>
 
 <template>
-    <button class="button">
+    <button @click="handler" class="button">
         <slot></slot>
     </button>
 </template>

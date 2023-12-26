@@ -37,7 +37,7 @@ const classes = {
 }
 
 .description-page--without-image {
-    margin: 40px 140px 0 140px;
+    margin: 40px 140px 40px 140px;
 }
 
 .description-page--without-image .description-page__header {
