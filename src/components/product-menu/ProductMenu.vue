@@ -1,9 +1,11 @@
 <script lang="ts" setup>
+import { ref } from 'vue';
 import RangeInput from '../../ui-kit/range-input/RangeInput.vue';
 import SearchBox from '../../ui-kit/searchbox/SearchBox.vue';
 import Dropdown from '../../ui-kit/dropdown/Dropdown.vue';
 import Button from '../../ui-kit/buttons/Button.vue';
 import CheckBox from '../../ui-kit/checkbox/CheckBox.vue';
+const inputState = ref('Аксон')
 </script>
 
 <template>
@@ -37,19 +39,28 @@ import CheckBox from '../../ui-kit/checkbox/CheckBox.vue';
             </div>
             <div class="m-t-32">
                 <h3 class="m-b-12">Поставщик</h3>
-                <Dropdown>
-                    <ul>
-                        <li>Аксон</li>
-                        <li>Аксон</li>
-                        <li>Аксон</li>
-                        <li>Аксон</li>
-                        <li>Аксон</li>
-                        <li>Аксон</li>
-                        <li>Аксон</li>
-                        <li>Аксон</li>
-                        <li>Аксон</li>
-                        <li>Аксон</li>
-                    </ul>
+                <Dropdown :inputState="inputState">
+                        <li>
+                            <Button :handler="()=>{inputState = 'Akson'}">Аксон</Button>
+                        </li>
+                        <li>
+                            <Button :handler="()=>{inputState = 'Bkson'}">Bксон</Button>
+                        </li>
+                        <li>
+                            <Button :handler="()=>{inputState = 'Skson'}">Sксон</Button>
+                        </li>
+                        <li>
+                            <Button :handler="()=>{inputState = 'Ekson'}">Eксон</Button>
+                        </li>
+                        <li>
+                            <Button :handler="()=>{}">Аксон</Button>
+                        </li>
+                        <li>
+                            <Button :handler="()=>{}">Аксон</Button>
+                        </li>
+                        <li>
+                            <Button :handler="()=>{}">Аксон</Button>
+                        </li>
                 </Dropdown>
             </div>
         </div>

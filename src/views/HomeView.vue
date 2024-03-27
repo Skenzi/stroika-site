@@ -2,7 +2,6 @@
 import Slider from '../components/slider/Slider.vue';
 import Carousel from '../modules/carousel/Carousel.vue';
 import ButtonWithIcon from '../ui-kit/buttons/ButtonWithIcon.vue';
-import ButtonIcon from '../ui-kit/buttons/ButtonIcon.vue';
 import CardList from '../modules/card-list/CardList.vue';
 import ProductCard from '../components/card/ProductCard.vue';
 import CategoryCard from '../components/card/CategoryCard.vue';
@@ -22,7 +21,7 @@ const comments = commentStore.comments
     <section class="container">
       <div class="d-flex justify-between align-center m-b-18">
             <h2>Акции</h2>
-            <ButtonWithIcon class="bg-main p-12-16-12-24" :icon="'/icons/angle.png'" :side="'after'" :handler="() => 'Hello'">Все акции</ButtonWithIcon>
+            <ButtonWithIcon class="bg-main p-12-16-12-24" :icon="'chevronR'" :side="'after'" :handler="() => 'Hello'">Все акции</ButtonWithIcon>
       </div>
       <CardList :card-type="'product'" :column="2">
         <ProductCard v-for="item in items.slice(0, 4)" :link="{ name: 'product', params: { category: item.category, subcategory: item.subcategory, product: item.description}}" :isRow="true" :key="item.id" :item="item" />
@@ -43,7 +42,7 @@ const comments = commentStore.comments
     <section class="container">
       <div class="d-flex justify-between align-center m-b-18">
             <h2>Популярные бренды</h2>
-            <ButtonWithIcon class="bg-main p-12-16-12-24" :icon="'/icons/angle.png'" :side="'after'" :handler="() => 'Hello'">Все бренды</ButtonWithIcon>
+            <ButtonWithIcon class="bg-main p-12-16-12-24" :icon="'chevronR'" :side="'after'" :handler="() => 'Hello'">Все бренды</ButtonWithIcon>
       </div>
       <CardList :card-type="'brand'" :column="6">
         <BrandCard v-for="item in items" :key="item.id" :item="item" />
@@ -52,9 +51,9 @@ const comments = commentStore.comments
     <section class="p-80-140 bg-light-grey overflow-x-hidden">
       <div class="d-flex justify-between align-center m-b-18">
             <h2>Отзывы</h2>
-            <div>
-              <ButtonIcon class="button--border" :icon="'/icons/angle.png'" id="toLeftCarousel" :handler="() => 'Hello'"  />
-              <ButtonIcon class="button--border" :icon="'/icons/angle.png'" id="toRightCarousel" :handler="() => 'Hello'"  />
+            <div class="group-controls">
+              <ButtonWithIcon class="button-icon button--border" :icon="'chevronL'" id="toLeftCarousel" :handler="() => 'Hello'"  />
+              <ButtonWithIcon class="button-icon button--border" :icon="'chevronR'" id="toRightCarousel" :handler="() => 'Hello'"  />
             </div>
       </div>
       <Carousel :items="comments" :to-left-id="'toLeftCarousel'" :to-right-id="'toRightCarousel'" />

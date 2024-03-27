@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import ButtonIcon from "../../ui-kit/buttons/ButtonIcon.vue";
+import ButtonWithIcon from "../../ui-kit/buttons/ButtonWithIcon.vue";
 import { useCartStore } from '../../stores/cartStore';
 const cartStore = useCartStore();
 const props = defineProps({
@@ -9,9 +9,9 @@ const props = defineProps({
 
 <template>
     <div class="counter">
-        <ButtonIcon class="p-12 d-flex button--border" :icon="'/icons/plus.svg'" @click="cartStore.setProductCount(productId, 1)" />
+        <ButtonWithIcon class="p-12 button--border" :icon="'plus'" @click="cartStore.setProductCount(productId, 1)" />
         <input class="counter__input" :value="cartStore.getProductCount(productId) || 0"/>
-        <ButtonIcon class="p-12 d-flex button--border" :icon="'/icons/minus.svg'" @click="cartStore.setProductCount(productId, -1)" />
+        <ButtonWithIcon class="p-12 button--border" :icon="'minus'" @click="cartStore.setProductCount(productId, -1)" />
     </div>
 </template>
 

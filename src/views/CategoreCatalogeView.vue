@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import ContentBlock from './components/content-block/ContentBlock.vue';
 import PageDescription from './components/page-description/PageDescription.vue';
 import CatalogNavigationList from '../modules/navigation-list/CatalogNavigationList.vue'
 
@@ -93,9 +92,9 @@ const items = [
 
 <template>
   <main>
-    <PageDescription class="main-top" :header="'Каталог'" :backgroundImagePath="'/images/backgroundBrands.png'" />
-    <ContentBlock class="container--all">
+    <PageDescription class="main-top" :header="'Каталог'" :backgroundImagePath="'/src/assets/images/backgroundBrands.png'" />
+    <section class="container container--all">
       <CatalogNavigationList />
-    </ContentBlock>
+    </section>
   </main>
 </template>

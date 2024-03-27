@@ -15,6 +15,7 @@ const handler = (num: number) => {
             let steps = 300;
             const el = item as HTMLElement;
             let timer = setInterval(() => {
+                console.log(1111)
                 const firstChildCoord = firstChild.getBoundingClientRect();
                 const lastChildCoord = lastChild.getBoundingClientRect();
                 if((firstChildCoord.x === carouselCoord.x) && (num === 1)) {
@@ -32,8 +33,8 @@ const handler = (num: number) => {
                     clearInterval(timer)
                     return;
                 }
-                const prevValue = +el.style.left.slice(0, el.style.left.length - 2);
-                el.style.left = String(prevValue + 1 * num) + 'px';
+                const prevLeftPosValue = +el.style.left.slice(0, el.style.left.length - 2);
+                el.style.left = String(prevLeftPosValue + num) + 'px';
                 steps -= 1;
             }, 2)
         }

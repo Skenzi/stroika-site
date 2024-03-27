@@ -1,13 +1,13 @@
 /* fonts */
 @font-face {
   font-family: 'Manrope';
-  src: url(/fonts/Manrope-Regular.ttf),
-  url(/fonts/Manrope-Medium.ttf),
-  url(/fonts/Manrope-Light.ttf),
-  url(/fonts/Manrope-SemiBold.ttf),
-  url(/fonts/Manrope-Bold.ttf),
-  url(/fonts/Manrope-ExtraBold.ttf),
-  url(/fonts/Manrope-ExtraLight.ttf);
+  src: url(../assets/fonts/Manrope-Regular.ttf),
+  url(../assets/fonts/Manrope-Medium.ttf),
+  url(../assets/fonts/Manrope-Light.ttf),
+  url(../assets/fonts/Manrope-SemiBold.ttf),
+  url(../assets/fonts/Manrope-Bold.ttf),
+  url(../assets/fonts/Manrope-ExtraBold.ttf),
+  url(../assets/fonts/Manrope-ExtraLight.ttf);
 }
 
 /* color palette */
@@ -64,7 +64,7 @@ ul, ol {
 }
 a {
   text-decoration: none;
-  color: var(--bg-dark);
+  color: var(--grey);
 }
 input {
   background: none;

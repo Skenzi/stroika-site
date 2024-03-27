@@ -2,7 +2,6 @@
 import { useRoute } from 'vue-router';
 import { useProductStore } from '../stores/productStore';
 import Button from '../ui-kit/buttons/Button.vue';
-import ContentBlock from './components/content-block/ContentBlock.vue';
 import CardList from '../modules/card-list/CardList.vue';
 import ProductCard from '../components/card/ProductCard.vue';
 import Counter from '../components/counter/Counter.vue';
@@ -16,27 +15,27 @@ const items = products.slice(0, 4)
 <template>
     <main class="container">
         <LinksPath />
-        <div class="product">
+        <section class="product">
             <div class="d-flex">
                 <div class="product__image-wrapper">
-                    <img class="product__image" src="/images/cardImage.png" />
+                    <img class="product__image" src="/src/assets/images/cardImage.png" />
                 </div>
-                <div class="product__main-info">
+                <section class="product__main-info">
                     <h2>Шпатлевка масляно-клеевая 3кг Л-С</h2>
-                    <div class="product__available"><img src="/icons/check-circle.svg" width="24" height="24" />В
+                    <div class="product__available"><img src="/src/assets/icons/check-circle.svg" width="24" height="24" />В
                         наличии</div>
-                    <div class="product__price">212 ₽</div>
+                    <p class="product__price">212 ₽</p>
                     <form class="product__form">
                         <Button class="bg-main" type="submit">В корзину</Button>
                         <Counter :product-id="'test'" />
                     </form>
-                    <div>Поставщик: Аксон</div>
+                    <p>Поставщик: Аксон</p>
                     <div class="product__delivery">
-                        <img src="/icons/car.svg" />
+                        <img src="/src/assets/icons/car.svg" />
                         <p>Доставка осуществляется курьерами поставщика или службой курьеров Достависта. Также товар можно
                             забрать самостоятельно от поставщика</p>
                     </div>
-                </div>
+                </section>
             </div>
             <section class="product__description">
                 <h2>Описание</h2>
@@ -91,15 +90,15 @@ const items = products.slice(0, 4)
                     При работе защищать кожу, глаза и дыхательные пути.
                 </p>
             </section>
-        </div>
-        <ContentBlock class="container--all">
+        </section>
+        <section class="container container--all">
             <h2>Похожие товары</h2>
             <CardList :column="4">
                 <ProductCard v-for="item in items"
                     :link="{ name: 'product', params: { category: item.category, subcategory: item.subcategory, product: item.description } }"
                     :key="item.id" :item="item" />
             </CardList>
-        </ContentBlock>
+        </section>
     </main>
 </template>
 

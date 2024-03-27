@@ -10,19 +10,18 @@ defineProps<{
 
 <template>
     <div class="category-card">
-        <RouterLink :to="link">
-            <div class="category-card__header">{{ header }}</div>
-            <img :src="imagePath" class="category-card__image" />
+        <RouterLink custom v-slot="{navigate}" :to="link">
+            <button role="link" @click="navigate">
+                <div class="category-card__header">{{ header }}</div>
+                <img :src="'/src/assets/images/'+imagePath" class="category-card__image" />
+            </button>
         </RouterLink>
     </div>
 </template>
 
 <style scoped>
 .category-card {
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    border: none;
+    height: auto;
     background-color: #F6F6F6;;
 }
 .category-card__header {

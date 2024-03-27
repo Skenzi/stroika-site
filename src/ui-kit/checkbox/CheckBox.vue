@@ -20,13 +20,13 @@
     display: inline-block;
     width: 24px;
     height: 24px;
-    background: url(/icons/checkbox.svg);
+    background: url(/src/assets/icons/checkbox.svg);
 }
 .checkbox__input {
     display: none;
 }
 .checkbox:has(.checkbox__input:checked).checkbox::before {
-    background: url(/icons/checked.svg);
+    background: url(/src/assets/icons/checked.svg);
 }
 .checkbox__text {
     

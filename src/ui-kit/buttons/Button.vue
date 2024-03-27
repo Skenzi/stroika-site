@@ -12,11 +12,15 @@ export default {
     </button>
 </template>
 
-<style scoped>
+<style>
  .button {
     padding: 12px 24px;
  }
  .button--border {
     border: 1px solid var(--light-grey);
+ }
+ .button.bg-main:hover {
+    color: white;
+    background-color: var(--grey);
  }
 </style>

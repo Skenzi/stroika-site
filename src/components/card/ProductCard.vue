@@ -24,11 +24,11 @@ const priceClasses = {
 </script>
 
 <template>
-    <div class="product-card" :class="cardClasses">
+    <article class="product-card" :class="cardClasses">
         <RouterLink :to="link" class="d-inline-block w-full">
-            <img class="product-card__image" :src="item.imagePath" />
+            <img class="product-card__image" :src="'/src/assets/images/'+item.imagePath" />
         </RouterLink>
-        <div class="product-card__body">
+        <section class="product-card__body">
             <RouterLink :to="link" class="body__description d-inline-block">
                 {{ item.description }}
             </RouterLink>
@@ -36,12 +36,11 @@ const priceClasses = {
                 <span v-if="discountPrice !== 0">{{ discountPrice }}</span>
                 <span :class="priceClasses">{{ item.price }}</span>
             </div>
-            <Button v-if="!cartStore.getProductCount(item.id)" class="body__button" @click="cartStore.addProduct(item)">В
-                корзину</Button>
+            <Button v-if="!cartStore.getProductCount(item.id)" class="bg-main" @click="cartStore.addProduct(item)">В корзину</Button>
             <Counter v-else :product-id="item.id" />
-        </div>
+        </section>
         <div v-if="discountPrice !== 0" class="product-card__dicount">{{ '-' + item.discount + '%' }}</div>
-    </div>
+    </article>
 </template>
 
 <style scoped>
@@ -103,11 +102,6 @@ const priceClasses = {
 .body__price {
     margin: 12px 0 16px 0;
     font-size: 20px;
-}
-
-.body__button {
-    width: 100%;
-    background-color: var(--main-color);
 }
 
 .body__price-old {

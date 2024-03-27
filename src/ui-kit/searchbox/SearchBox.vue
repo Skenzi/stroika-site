@@ -16,8 +16,12 @@
     flex: 1;
     position: relative;
   }
+  .searchbox .input:focus, .searchbox .input:active {
+    outline: none;
+  }
+  
   .searchbox__button {
-    background: url(/icons/lupa.svg);
+    background: url(/src/assets/icons/lupa.svg);
     position: absolute;
     display: inline-block;
     width: 24px;

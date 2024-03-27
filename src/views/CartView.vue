@@ -10,10 +10,10 @@ const products = cartStore.getProducts();
 
 <template>
     <main class="container">
-        <PageDescription :header="'Корзина'" :background-image-path="'/images/backgroundBrands.png'" />
-        <div class="cart">
+        <PageDescription :header="'Корзина'" :background-image-path="'/src/assets/images/backgroundBrands.png'" />
+        <section class="cart">
             <div class="cart__order-info">
-                <div class="cart__total">
+                <section class="cart__total">
                     <div class="cart__total-header">Итого</div>
                     <div class="cart__total-row">
                         <p>Количество товара</p>
@@ -27,11 +27,11 @@ const products = cartStore.getProducts();
                         <p>Поставщик</p>
                         <p>{{ products.length }}</p>
                     </div>
-                </div>
+                </section>
                 <div class="cart__button-wrapper">
                     <Button :handler="() => console.log('Ordered')" class="bg-main w-full">Оформить заказ</Button>
                 </div>
-                <div>
+                <section>
                     <div class="cart__hint">
                         <img src="/icons/car.svg" />
                         <p>Можно сделать заказ только от одного поставщика</p>
@@ -44,14 +44,14 @@ const products = cartStore.getProducts();
                         <img src="/icons/car.svg" />
                         <p>Точная сумма доставки будет определена после после подтверждения заказа</p>
                     </div>
-                </div>
+                </section>
             </div>
             <div class="cart__products">
-                <div class="cart__product" v-for="product of products" :key="product.id">
+                <article class="cart__product" v-for="product of products" :key="product.id">
                     <div class="product__image-wrapper">
                         <img class="product__image" :src="product.imagePath" />
                     </div>
-                    <div class="product__info">
+                    <section class="product__info">
                         <div class="product__col">
                             <p>Рубероид РКП-350 ТУ, размер материала 1 х 10 м (10м2, 1 рулон)</p>
                             <p class="product__price">449 ₽</p>
@@ -64,10 +64,10 @@ const products = cartStore.getProducts();
                             </div>
                                 <Button :handler="() => cartStore.removeProduct(product.id)" class="button--border w-full">Удалить товар</Button>
                         </div>
-                    </div>
-                </div>
+                    </section>
+                </article>
             </div>
-        </div>
+        </section>
     </main>
 </template>
 

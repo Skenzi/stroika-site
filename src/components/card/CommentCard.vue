@@ -10,7 +10,7 @@ defineProps({
 <template>
     <div class="comment">
         <div class="comment__header">
-            <img :src="avatar" />
+            <img :src="'/src/assets/avatars/'+avatar" />
             {{ name }}
         </div>
         <div class="comment__body">
@@ -38,6 +38,6 @@ defineProps({
     position: absolute;
     top: 24px;
     right: 24px;
-    background: url('/icons/CommentMetka.svg') no-repeat;
+    background: url('/src/assets/icons/CommentMetka.svg') no-repeat;
 }
 </style>

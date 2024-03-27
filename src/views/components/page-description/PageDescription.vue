@@ -1,5 +1,4 @@
 <script lang="ts" setup>
-import { RouterLink } from 'vue-router'
 import LinksPath from '../../../ui-kit/linksPath/LinksPath.vue';
 import buildPath from '../../../features/getPathsFromUrl';
 const paths = buildPath()
@@ -46,4 +45,13 @@ const classes = {
 
 .description-page__path {
     margin-bottom: 20px;
-}</style>
+}
+@media (max-width: 769px) {
+    .description-page {
+        padding: 10px 185px 22px 35px;
+    }
+    .description-page--without-image {
+        margin: 10px 35px;
+    }
+  }
+</style>

@@ -9,7 +9,7 @@ defineProps({
 <template>
     <div class="brand-card">
         <RouterLink :to="'/'">
-            <img :src="item.imagePath" alt="brand"/>
+            <img :src="'/src/assets/images/'+item.imagePath" alt="brand"/>
         </RouterLink>
     </div>
 </template>

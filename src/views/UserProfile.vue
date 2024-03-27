@@ -73,7 +73,8 @@ export default {
 
 <style scoped>
 .profile-wrapper {
-    padding: 40px 336px 80px 336px;
+    max-width: 768px;
+    margin: 40px auto 80px;
 }
 .profile-form {
     margin-top: 40px;

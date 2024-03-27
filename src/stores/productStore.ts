@@ -10,7 +10,7 @@ export const useProductStore = defineStore('products', () => {
             "discount": 15,
             "category": 'Сантехника',
             "subcategory": 'Сухие смеси',
-            imagePath: '/images/cardImage.png'
+            imagePath: 'cardImage.png'
         },
         {
             "id": "002",
@@ -19,7 +19,7 @@ export const useProductStore = defineStore('products', () => {
             "discount": 10,
             "category": 'Сантехника',
             "subcategory": 'Сухие смеси',
-            imagePath: '/images/cardImage.png'
+            imagePath: 'cardImage.png'
         },
         {
             "id": "003",
@@ -28,7 +28,7 @@ export const useProductStore = defineStore('products', () => {
             "discount": 20,
             "category": 'Сантехника',
             "subcategory": 'Сухие смеси',
-            imagePath: '/images/cardImage.png'
+            imagePath: 'cardImage.png'
         },
         {
             "id": "004",
@@ -37,7 +37,7 @@ export const useProductStore = defineStore('products', () => {
             "discount": 15,
             "category": 'Сантехника',
             "subcategory": 'Сухие смеси',
-            imagePath: '/images/cardImage.png'
+            imagePath: 'cardImage.png'
         },
         {
             "id": "005",
@@ -46,7 +46,7 @@ export const useProductStore = defineStore('products', () => {
             "discount": 10,
             "category": 'Сантехника',
             "subcategory": 'Сухие смеси',
-            imagePath: '/images/cardImage.png'
+            imagePath: 'cardImage.png'
         },
         {
             "id": "006",
@@ -55,7 +55,7 @@ export const useProductStore = defineStore('products', () => {
             "discount": 20,
             "category": 'Сантехника',
             "subcategory": 'Сухие смеси',
-            imagePath: '/images/cardImage.png'
+            imagePath: 'cardImage.png'
         },
         {
             "id": "007",
@@ -64,7 +64,7 @@ export const useProductStore = defineStore('products', () => {
             "discount": 15,
             "category": 'Сантехника',
             "subcategory": 'Сухие смеси',
-            imagePath: '/images/cardImage.png'
+            imagePath: 'cardImage.png'
         },
         {
             "id": "008",
@@ -73,7 +73,7 @@ export const useProductStore = defineStore('products', () => {
             "discount": 10,
             "category": 'Сантехника',
             "subcategory": 'Сухие смеси',
-            imagePath: '/images/cardImage.png'
+            imagePath: 'cardImage.png'
         },
         {
             "id": "009",
@@ -82,7 +82,7 @@ export const useProductStore = defineStore('products', () => {
             "discount": 20,
             "category": 'Сантехника',
             "subcategory": 'Сухие смеси',
-            imagePath: '/images/cardImage.png'
+            imagePath: 'cardImage.png'
         },
         {
             "id": "010",
@@ -91,7 +91,7 @@ export const useProductStore = defineStore('products', () => {
             "discount": 15,
             "category": 'Сантехника',
             "subcategory": 'Сухие смеси',
-            imagePath: '/images/cardImage.png'
+            imagePath: 'cardImage.png'
         },
         {
             "id": "011",
@@ -100,7 +100,7 @@ export const useProductStore = defineStore('products', () => {
             "discount": 10,
             "category": 'Сантехника',
             "subcategory": 'Сухие смеси',
-            imagePath: '/images/cardImage.png'
+            imagePath: 'cardImage.png'
         },
         {
             "id": "012",
@@ -109,7 +109,7 @@ export const useProductStore = defineStore('products', () => {
             "discount": 20,
             "category": 'Сантехника',
             "subcategory": 'Сухие смеси',
-            imagePath: '/images/cardImage.png'
+            imagePath: 'cardImage.png'
         }
     ]);
     const categories = ref({

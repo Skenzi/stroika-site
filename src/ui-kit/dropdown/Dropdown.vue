@@ -1,6 +1,5 @@
 <script lang="ts">
 import { defineComponent, ref, computed } from 'vue'
-
 export default defineComponent({
     setup() {
         let isOpen = ref(false);
@@ -17,23 +16,26 @@ export default defineComponent({
             isOpen,
             buttonClasses,
             menuClasses,
-            handler
+            handler,
         }
     },
+    props: {
+        inputState: {type: String}
+    }
 })
 </script>
 
 <template>
     <div class="dropdown">
-        <input readonly @click="handler" class="input" />
+        <input readonly :value="inputState" @click="handler" class="input" />
         <button class="dropdown__button" :class="buttonClasses" @click="handler"></button>
-        <div class="dropdown__menu" :class="menuClasses">
+        <ul class="dropdown__menu" :class="menuClasses">
             <slot></slot>
-        </div>
+        </ul>
     </div>
 </template>
 
-<style scoped>
+<style>
 .dropdown {
     position: relative;
     width: 100%;
@@ -45,7 +47,7 @@ export default defineComponent({
         width: 24px;
         height: 24px;
         display: inline-block;
-        background: url('/icons/angle.png');
+        background: url('/src/assets/icons/chevronR.svg');
         transform: rotate(90deg);
     }
     .dropdown__button--clicked {
@@ -54,6 +56,14 @@ export default defineComponent({
     .dropdown__menu {
         display: none;
         width: 100%;
+    }
+    .dropdown__menu * {
+        width: 100%;
+    }
+    .dropdown__menu .button {
+        padding: 0;
+        margin-top: 6px;
+        justify-content: left;
     }
     .dropdown__menu--open {
         display: block;

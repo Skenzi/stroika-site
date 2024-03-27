@@ -14,7 +14,7 @@ const modalStore = useModalStore();
         <CitySearchContent v-else-if="modalStore.modalType === 'cities'" />
         <RegistrationContent v-else-if="modalStore.modalType === 'registration'" />
         <SimpleContent v-else />
-        <button @click="modalStore.changeModalState" class="close-modal"></button>
+        <button @click="modalStore.changeModalState()" class="close-modal"></button>
     </div>
 </template>
 

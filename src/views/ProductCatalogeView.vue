@@ -15,11 +15,11 @@ const items = products
 <template>
     <main>
         <PageDescription :header="headerText" />
-        <div class="d-flex gap-16 p-0-140-80-140">
+        <div class="d-flex gap-16 container">
             <ProductMenu />
             <div>
-                <div class="sort-buttons">
-                    <Button class="sort-buttons__active-button">Популярные</Button>
+                <div class="group-controls">
+                    <Button class="button--active">Популярные</Button>
                     <Button>Популярные</Button>
                     <Button>Популярные</Button>
                     <Button>Популярные</Button>
@@ -33,12 +33,6 @@ const items = products
 </template>
 
 <style scoped>
-.p-0-140-80-140 {
-    padding: 0 140px 80px 140px;
-}
-.m-t-16 {
-    margin-top: 16px;
-}
 .button {
     padding: 0;
     color: #8B8D92;
@@ -46,7 +40,7 @@ const items = products
 .button:nth-child(1n+2) {
     margin-left: 20px;
 }
-.sort-buttons__active-button {
+.button--active {
     color: #171B24;
 }
 </style>

@@ -58,10 +58,10 @@
     <div class="footer__item">
       <div>© СтройкаСтор</div>
       <div class="footer__credit-cards">
-        <img src="/icons/visa.png" alt="visa" />
-        <img src="/icons/mastercard.png" alt="mastercard" />
-        <img src="/icons/maestro-card.png" alt="maestro" />
-        <img src="/icons/mir.png" alt="mir" />
+        <img src="/src/assets/icons/visa.png" alt="visa" />
+        <img src="/src/assets/icons/mastercard.png" alt="mastercard" />
+        <img src="/src/assets/icons/maestro-card.png" alt="maestro" />
+        <img src="/src/assets/icons/mir.png" alt="mir" />
       </div>
       <div>Cделано в KRUGLOV STUDIO</div>
     </div>
@@ -75,6 +75,7 @@
 }
 .footer__item {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
 }
@@ -103,13 +104,14 @@
   margin-right: 8px;
 }
 .contacts__item--mail::before {
-  background: url(/icons/mail.png) no-repeat;
+  background: url(/src/assets/icons/mail.png) no-repeat;
 }
 .contacts__item--address::before {
-  background: url(/icons/metka.svg) no-repeat;
+  background: url(/src/assets/icons/metka.svg) no-repeat;
 }
 .footer__credit-cards {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   gap: 16px;
 }

@@ -18,8 +18,7 @@
     width: 16px;
     height: 16px;
     margin-right: 4px;
-    background: url('/icons/arrow.png');
-    transform: rotate(180deg);
+    background: url('/src/assets/icons/arrowR.svg');
     background-size: contain;
 }
 </style>>

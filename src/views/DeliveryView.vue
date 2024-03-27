@@ -8,7 +8,7 @@ import FaqView from '../modules/faq/FaqView.vue'
   <main>
     <PageDescription
       :header="'Доставка'"
-      :backgroundImagePath="'/images/backgroundBrands.png'"
+      :backgroundImagePath="'/src/assets/images/backgroundBrands.png'"
       :pathEnd="'Доставка'"
       :description="'Доставка осуществляется курьерами поставщика или службой курьеров Достависта. Также товар можно забрать самостоятельно от поставщика'"
     />

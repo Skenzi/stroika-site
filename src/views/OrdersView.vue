@@ -11,7 +11,7 @@ const orders = [
             "discount": 15,
             "category": 'Сантехника',
             "subcategory": 'Сухие смеси',
-            imagePath: '/images/cardImage.png'
+            imagePath: 'cardImage.png'
         }
     },
     {
@@ -24,7 +24,7 @@ const orders = [
             "discount": 15,
             "category": 'Сантехника',
             "subcategory": 'Сухие смеси',
-            imagePath: '/images/cardImage.png'
+            imagePath: 'cardImage.png'
         }
     },
     {
@@ -37,7 +37,7 @@ const orders = [
             "discount": 15,
             "category": 'Сантехника',
             "subcategory": 'Сухие смеси',
-            imagePath: '/images/cardImage.png'
+            imagePath: 'cardImage.png'
         }
     },
     {
@@ -50,7 +50,7 @@ const orders = [
             "discount": 15,
             "category": 'Сантехника',
             "subcategory": 'Сухие смеси',
-            imagePath: '/images/cardImage.png'
+            imagePath: 'cardImage.png'
         }
     },
     {
@@ -63,7 +63,7 @@ const orders = [
             "discount": 15,
             "category": 'Сантехника',
             "subcategory": 'Сухие смеси',
-            imagePath: '/images/cardImage.png'
+            imagePath: 'cardImage.png'
         }
     },
 ]
@@ -71,10 +71,10 @@ const orders = [
 
 <template>
     <main>
-        <PageDescription :header="'Заказы'" :background-image-path="'/images/backgroundBrands.png'" />
+        <PageDescription :header="'Заказы'" :background-image-path="'/src/assets/images/backgroundBrands.png'" />
         <div class="container">
             <div class="order" v-for="order of orders" :key="order.id">
-                <img :src="order.product?.imagePath" class="order__image" />
+                <img :src="'/src/assets/images/'+order.product?.imagePath" class="order__image" />
                 <div class="order__product-description">
                     <div class="order__product-text">{{ order.product?.description }}</div>
                     <div class="order__product-price">{{ order.product.price }}</div>

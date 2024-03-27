@@ -1,47 +1,47 @@
 <script lang="ts" setup>
-import ButtonIcon from "../../ui-kit/buttons/ButtonIcon.vue";
-import Button from '../../ui-kit/buttons/Button.vue';
+import ButtonWithIcon from "../../ui-kit/buttons/ButtonWithIcon.vue";
+import Button from "../../ui-kit/buttons/Button.vue";
 import { ref, computed } from "vue";
 
 const slides = [
     {
-        image: '/images/sliderBg.png',
+        image: '/src/assets/images/sliderBg.png',
         header: 'Специальные предложения',
         text: 'на строительные материалы и товары для ремонта',
         handler: () => ''
     },
     {
-        image: '/images/sliderBg.png',
+        image: '/src/assets/images/sliderBg.png',
         header: 'Hello1',
         text: 'World!',
         handler: () => ''
     },
     {
-        image: '/images/sliderBg.png',
+        image: '/src/assets/images/sliderBg.png',
         header: 'Hello2',
         text: 'World!',
         handler: () => ''
     },
     {
-        image: '/images/sliderBg.png',
+        image: '/src/assets/images/sliderBg.png',
         header: 'Hello3',
         text: 'World!',
         handler: () => ''
     },
     {
-        image: '/images/sliderBg.png',
+        image: '/src/assets/images/sliderBg.png',
         header: 'Hello',
         text: 'World!',
         handler: () => ''
     },
     {
-        image: '/images/sliderBg.png',
+        image: '/src/assets/images/sliderBg.png',
         header: 'Hello',
         text: 'World!',
         handler: () => ''
     },
     {
-        image: '/images/sliderBg.png',
+        image: '/src/assets/images/sliderBg.png',
         header: 'Hello',
         text: 'World!',
         handler: () => ''
@@ -60,7 +60,7 @@ const slide = computed(() => slides[currSlideIndex.value])
 </script>
 
 <template>
-    <section class="slider m-40-40-0-40">
+    <div class="slider m-40-40-0-40">
         <section class="slide" :style="`background-image: url(${slide.image})`">
             <div class="slide__content">
                 <h1 class="slide__header">{{ slide.header }}</h1>
@@ -70,13 +70,13 @@ const slide = computed(() => slides[currSlideIndex.value])
             </div>
             <div class="slide__actions">
                 <Button class="bg-main" :handler="slide.handler">Подробнее</Button>
-                <div>
-                    <ButtonIcon class="slide__button" :icon="'/icons/arrow.png'" :handler="decrement" />
-                    <ButtonIcon class="slide__button" :icon="'/icons/arrow.png'" :handler="increment" />
+                <div class="group-controls">
+                    <ButtonWithIcon class="button--border" :icon="'arrowL'" :handler="decrement" />
+                    <ButtonWithIcon class="button--border" :icon="'arrowR'" :handler="increment" />
                 </div>
             </div>
         </section>
-    </section>
+    </div>
 </template>
 
 <style scoped>
@@ -86,15 +86,15 @@ const slide = computed(() => slides[currSlideIndex.value])
 
 .slide {
     height: 100%;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
     padding: 40px 100px;
     background-size: cover;
     background-repeat: no-repeat;
 }
-.slide__button {
-    max-width: 52px;
-    max-height: 52px;
-    background-color: var(--white);
-    border: 1px solid var(--light-grey);
+.slide__button svg {
+    height: 24px;
 }
 .slide__content {
     max-width: 350px;

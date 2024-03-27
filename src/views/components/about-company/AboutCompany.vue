@@ -19,7 +19,7 @@
 .about-company {
     padding: 88px 492px 88px 198px;
     margin: 40px;
-    background-image: url('/images/aboutCompany.png');
+    background-image: url('/src/assets/images/aboutCompany.png');
     background-size: cover;
     background-position-y: center;
 }

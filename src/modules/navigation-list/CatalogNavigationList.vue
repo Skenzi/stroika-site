@@ -19,7 +19,7 @@ const sortNavMarker = ref('');
         </nav>
         <div class="navigation-list__categories">
             <div class="navigation-list__category" v-for="category, categoryKey in productStore.categories" :key="categoryKey">
-                <CategoryCard class="category__image" :image-path="'/images/cardImage.png'" :link="{ name: 'category', params: { category: categoryKey}}" :header="category.name" />
+                <CategoryCard class="category__image" :image-path="'cardImage.png'" :link="{ name: 'category', params: { category: categoryKey}}" :header="category.name" />
                 <div class="navigation-list__subcategories">
                     <div v-for="subcategory in category.subcategories" :key="subcategory" class="w-full">
                         <WrapperArrow>

@@ -41,7 +41,7 @@ import { ref, computed } from 'vue'
         display: inline-block;
         width: 24px;
         height: 24px;
-        background: url('/icons/angle.png') no-repeat;
+        background: url('/src/assets/icons/chevronR.svg') no-repeat;
         transform: rotate(90deg);
     }
     .dropdown__button--clicked.dropdown__button::after {
