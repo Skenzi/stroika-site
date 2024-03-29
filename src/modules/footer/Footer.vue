@@ -115,4 +115,12 @@
   align-items: center;
   gap: 16px;
 }
+@media (max-width: 768px) {
+  .footer {
+    padding: 10px;
+  }
+  .footer__item > *:nth-child(1n+2) {
+    margin-top: 10px;
+  }
+}
 </style>

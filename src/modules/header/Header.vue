@@ -95,7 +95,7 @@ onMounted(() => {
             </RouterLink>
             
                 <RouterLink custom v-slot="{navigate}" :to="'/cataloge'">
-                    <ButtonWithIcon :class="'button-cataloge bg-main p-12-20'" :icon="'menu'" @click="navigate">Каталог</ButtonWithIcon>
+                    <ButtonWithIcon :class="'cataloge-button bg-main p-12-20'" :icon="'menu'" @click="navigate">Каталог</ButtonWithIcon>
                 </RouterLink>
                 <SearchBox class="m-l-16" />
                 <div class="header__actions">
@@ -194,7 +194,7 @@ onMounted(() => {
     width: 24px;
     height: 24px;
 }
-.button-cataloge {
+.cataloge-button {
     padding: 12px 20px;
 }
 .actions__item--profile::before {
@@ -223,7 +223,17 @@ onMounted(() => {
 
 @media (max-width: 769px) {
     .header__row {
-        padding: 10px 35px;
+        flex-direction: column;
+        padding: 10px;
+    }
+    .button-cataloge {
+        width: 100%;
+    }
+    .header__logo, .searchbox {
+        margin: 0;
+    }
+    .header__row--middle > *:nth-child(1n+2) {
+        margin-top: 10px;
     }
 }
 </style>
