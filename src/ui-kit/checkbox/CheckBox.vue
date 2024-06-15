@@ -1,11 +1,13 @@
 <script lang="ts" setup>
-
+defineProps({
+    innerText: String
+})
 </script>
 
 <template>
     <label class="checkbox">
         <input class="checkbox__input" type="checkbox" id="name" name="name" />
-        <span class="checkbox__text" for="name">Name</span>
+        <span class="checkbox__text" for="name">{{ innerText }}</span>
     </label>
 </template>
 

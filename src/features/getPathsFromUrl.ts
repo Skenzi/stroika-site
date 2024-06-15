@@ -1,24 +1,28 @@
 import { useRoute } from 'vue-router';
-
-const map = {
+interface MapProps {
+    [key: string]: string
+}
+const map: MapProps = {
     '/': 'Главная',
+    '/cataloge': 'Каталог'
 };
 
 export default () => {
     const route = useRoute();
     const res = [];
-    let currPath = route.path;
-    const params = Object.values(route.params);
-    let endInd = currPath.length;
-    const startInd = currPath.indexOf('/');
-    let paramInd = params.length - 1;
-    while(startInd !== endInd) {
-        const subpath = currPath.slice(startInd, endInd)
-        endInd = subpath.lastIndexOf('/');
-        const namePath = params[paramInd] || 'Cataloge'
-        map[subpath] = namePath;
-        res.unshift([namePath, subpath]);
-        currPath = subpath;
+    let link = route.path;
+    const params = route.params;
+    const pathParts = route.matched[0].path.split('/:');
+    let endLinkInd = link.length;
+    const startLinkInd = 0;
+    let paramInd = pathParts.length - 1;
+    while(startLinkInd !== endLinkInd) {
+        const newLink = link.slice(startLinkInd, endLinkInd)
+        endLinkInd = newLink.lastIndexOf('/');
+        const namePath: string = map[newLink] || params[pathParts[paramInd]].toString();
+        if(!map[newLink]) map[newLink] = namePath;
+        res.unshift([namePath, newLink]);
+        link = newLink;
         paramInd -= 1;
     }
     res.unshift(['Главная', '/'])

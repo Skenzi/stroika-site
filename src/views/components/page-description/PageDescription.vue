@@ -1,7 +1,5 @@
 <script lang="ts" setup>
-import LinksPath from '../../../ui-kit/linksPath/LinksPath.vue';
-import buildPath from '../../../features/getPathsFromUrl';
-const paths = buildPath()
+import LinksPath from '@/ui-kit/linksPath/LinksPath.vue';
 const props = defineProps({
     description: String,
     header: { type: String, required: true },
@@ -18,7 +16,7 @@ const classes = {
         :style="`background-image: url(${backgroundImagePath})`">
         <LinksPath />
         <h1 class="description-page__header">{{ header }}</h1>
-        <p>
+        <p v-if="description">
             {{ description }}
         </p>
     </section>

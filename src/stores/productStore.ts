@@ -5,6 +5,9 @@ export const useProductStore = defineStore('products', () => {
     const products = ref([
         {
             "id": "001",
+            "title": "Product A",
+            "brand": 'Мангал',
+            "deliver": 'Аксон',
             "description": "Product A",
             "price": 19.99,
             "discount": 15,
@@ -14,6 +17,9 @@ export const useProductStore = defineStore('products', () => {
         },
         {
             "id": "002",
+            "title": "Product A",
+            "brand": 'Мангал',
+            "deliver": 'Аксон',
             "description": "Product B",
             "price": 9.99,
             "discount": 10,
@@ -23,6 +29,9 @@ export const useProductStore = defineStore('products', () => {
         },
         {
             "id": "003",
+            "title": "Product A",
+            "brand": 'Мангал',
+            "deliver": 'Аксон',
             "description": "Product C",
             "price": 24.99,
             "discount": 20,
@@ -32,6 +41,9 @@ export const useProductStore = defineStore('products', () => {
         },
         {
             "id": "004",
+            "title": "Product A",
+            "brand": 'Мангал',
+            "deliver": 'Аксон',
             "description": "Product A",
             "price": 19.99,
             "discount": 15,
@@ -41,6 +53,9 @@ export const useProductStore = defineStore('products', () => {
         },
         {
             "id": "005",
+            "title": "Product A",
+            "brand": 'Мангал',
+            "deliver": 'Аксон',
             "description": "Product B",
             "price": 9.99,
             "discount": 10,
@@ -50,8 +65,11 @@ export const useProductStore = defineStore('products', () => {
         },
         {
             "id": "006",
+            "title": "Product A",
+            "brand": 'Мангал',
+            "deliver": 'Аксон',
             "description": "Product C",
-            "price": 24.99,
+            "price": 294.99,
             "discount": 20,
             "category": 'Сантехника',
             "subcategory": 'Сухие смеси',
@@ -59,6 +77,9 @@ export const useProductStore = defineStore('products', () => {
         },
         {
             "id": "007",
+            "title": "Product A",
+            "brand": 'Мангал',
+            "deliver": 'Аксон',
             "description": "Product A",
             "price": 19.99,
             "discount": 15,
@@ -68,6 +89,9 @@ export const useProductStore = defineStore('products', () => {
         },
         {
             "id": "008",
+            "title": "Product A",
+            "brand": 'Мангал',
+            "deliver": 'Аксон',
             "description": "Product B",
             "price": 9.99,
             "discount": 10,
@@ -77,6 +101,9 @@ export const useProductStore = defineStore('products', () => {
         },
         {
             "id": "009",
+            "title": "Product A",
+            "brand": 'Мангал',
+            "deliver": 'Аксон',
             "description": "Product C",
             "price": 24.99,
             "discount": 20,
@@ -86,6 +113,9 @@ export const useProductStore = defineStore('products', () => {
         },
         {
             "id": "010",
+            "title": "Product A",
+            "brand": 'Мангал',
+            "deliver": 'Аксон',
             "description": "Product A",
             "price": 19.99,
             "discount": 15,
@@ -95,8 +125,11 @@ export const useProductStore = defineStore('products', () => {
         },
         {
             "id": "011",
+            "title": "Product A",
+            "brand": 'Мангал',
+            "deliver": 'Аксон',
             "description": "Product B",
-            "price": 9.99,
+            "price": 119.99,
             "discount": 10,
             "category": 'Сантехника',
             "subcategory": 'Сухие смеси',
@@ -104,8 +137,11 @@ export const useProductStore = defineStore('products', () => {
         },
         {
             "id": "012",
+            "title": "Product A",
+            "brand": 'Мангал',
+            "deliver": 'Аксон',
             "description": "Product C",
-            "price": 24.99,
+            "price": 224.99,
             "discount": 20,
             "category": 'Сантехника',
             "subcategory": 'Сухие смеси',
@@ -249,11 +285,5 @@ export const useProductStore = defineStore('products', () => {
             ]
         }
     })
-    function setProductToCart(item: string, count: number) {
-
-    }
-    function getProductCount(item: string) {
-
-    }
-    return { products, categories, getProductCount }
+    return { products, categories }
 })

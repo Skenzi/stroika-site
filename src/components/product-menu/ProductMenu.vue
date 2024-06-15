@@ -6,10 +6,14 @@ import Dropdown from '../../ui-kit/dropdown/Dropdown.vue';
 import Button from '../../ui-kit/buttons/Button.vue';
 import CheckBox from '../../ui-kit/checkbox/CheckBox.vue';
 const inputState = ref('Аксон')
+const formHandler = (ev) => {
+    ev.preventDefault();
+    const formData = new FormData(ev.currentTarget);
+}
 </script>
 
 <template>
-    <div class="w-sm w-full">
+    <form :onSubmit="formHandler" class="w-sm w-full">
         <div class="border-wrapper border-wrapper--sm">
             <div>
                 <h3 class="m-b-12">Цена</h3>
@@ -19,22 +23,10 @@ const inputState = ref('Аксон')
                 <h3 class="m-b-12">Бренд</h3>
                 <SearchBox />
                 <div class="checkbox-container m-t-12">
-                    <CheckBox />
-                    <CheckBox />
-                    <CheckBox />
-                    <CheckBox />
-                    <CheckBox />
-                    <CheckBox />
-                    <CheckBox />
-                    <CheckBox />
-                    <CheckBox />
-                    <CheckBox />
-                    <CheckBox />
-                    <CheckBox />
-                    <CheckBox />
-                    <CheckBox />
-                    <CheckBox />
-                    <CheckBox />
+                    <CheckBox name="test" innerText="Мангал" />
+                    <CheckBox innerText="Веранда" />
+                    <CheckBox innerText="Маяхи" />
+                    <CheckBox innerText="Береза" />
                 </div>
             </div>
             <div class="m-t-32">
@@ -44,13 +36,13 @@ const inputState = ref('Аксон')
                             <Button :handler="()=>{inputState = 'Akson'}">Аксон</Button>
                         </li>
                         <li>
-                            <Button :handler="()=>{inputState = 'Bkson'}">Bксон</Button>
+                            <Button :handler="()=>{inputState = 'Bkson'}">Вксон</Button>
                         </li>
                         <li>
-                            <Button :handler="()=>{inputState = 'Skson'}">Sксон</Button>
+                            <Button :handler="()=>{inputState = 'Skson'}">Сксон</Button>
                         </li>
                         <li>
-                            <Button :handler="()=>{inputState = 'Ekson'}">Eксон</Button>
+                            <Button :handler="()=>{inputState = 'Ekson'}">Ексон</Button>
                         </li>
                         <li>
                             <Button :handler="()=>{}">Аксон</Button>
@@ -68,13 +60,13 @@ const inputState = ref('Аксон')
             <Button class="bg-main w-full">Применить</Button>
             <Button class="button--border w-full m-t-12">Сбросить</Button>
         </div>
-    </div>
+    </form>
 </template>
 
 <style scoped>
 .checkbox-container {
     max-height: 204px;
-    overflow-y: scroll;
+    overflow-y: auto;
 }
 .m-t-32 {
     margin-top: 32px;

@@ -9,6 +9,7 @@ import LinksPath from '../ui-kit/linksPath/LinksPath.vue';
 
 const { products } = useProductStore()
 const route = useRoute()
+console.log(route.path, route.params, route.matched[0].path)
 const items = products.slice(0, 4)
 </script>
 
@@ -39,21 +40,24 @@ const items = products.slice(0, 4)
             </div>
             <section class="product__description">
                 <h2>Описание</h2>
-                <p>
+                <p class="product__description-p">
                     Штукатурка Волма Слой, 30кг
                     Штукатурка на гипсовой основе для ручного нанесения.
-    
+                </p>
+                <p class="product__description-p">
                     НАЗНАЧЕНИЕ:
                     Выравнивание оснований в помещениях нормальной влажности перед нанесением декоративного слоя;
                     Создание ровной поверхности на цементных, цементно-известковых, бетонных, кирпичных, гипсовых и
                     гипсокартонных плоскостях.
-    
+                </p>
+                <p>
                     ПРЕИМУЩЕСТВА:
                     Экономичная (расход продукта 8-9 кг на 1 кв.м, не требует покрытия шпаклевкой);
                     Пластичная;
                     Слой нанесения от 5 до 60мм;
                     Можно использовать для создания декоративных поверхностей.
-    
+                </p>
+                <p class="product__description-p">
                     ИНСТРУКЦИЯ ПО ПРИМЕНЕНИЮ:
                     Подготовка основания:
                     Поверхность нужно очистить и просушить. Вещества, ослабляющие сцепление с поверхностью, такие как жир,
@@ -80,18 +84,20 @@ const items = products.slice(0, 4)
                     Для того чтобы поверхность стала глянцевой нужно в течение суток, но не ранее трех часов, повторно смочить
                     поверхность
                     водой и загладить шпателем.
-    
+                </p>
+                <p class="product__description-p">
                     РЕКОМЕНДАЦИИ:
                     После окончания штукатурных работ основание рекомендуется прогрунтовать;
                     Поверхности, которые не будут штукатуриться (пол, окна, мебель и т.п.) необходимо закрывать;
                     Использованные инструмент и емкости необходимо вымыть водой после завершения работ.
-    
+                </p>
+                <p class="product__description-p">
                     МЕРЫ ПРЕДОСТОРОЖНОСТИ:
                     При работе защищать кожу, глаза и дыхательные пути.
                 </p>
             </section>
         </section>
-        <section class="container container--all">
+        <section class="container--all">
             <h2>Похожие товары</h2>
             <CardList :column="4">
                 <ProductCard v-for="item in items"
@@ -121,6 +127,9 @@ const items = products.slice(0, 4)
     padding: 60px 200px;
     margin-top: 40px;
     border: 1px solid #E8E9EA;
+}
+.product__description-p {
+    margin-top: 14px;
 }
 .product__form {
     display: flex;

@@ -5,7 +5,7 @@ let movementElement: HTMLElement | null = null;
 export default defineComponent({
     setup(props) {
         const startValue = ref(props.start);
-        let endValue = ref(props.end);
+        const endValue = ref(props.end);
         const fullInterval = props.end - props.start;
         return { fullInterval, startValue, endValue }
     },

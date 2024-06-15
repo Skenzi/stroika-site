@@ -5,8 +5,10 @@ import SearchBox from '../../ui-kit/searchbox/SearchBox.vue'
 import ButtonWithIcon from '../../ui-kit/buttons/ButtonWithIcon.vue'
 import DividingLine from '../../ui-kit/line/DividingLine.vue'
 import { useModalStore } from '../../stores/modal';
+import { usePathStore } from '@/stores/pathStore';
 
 const modalStore = useModalStore();
+const { addNewPart } = usePathStore()
 const buttonHandler = () => {
     modalStore.changeModalType('cities')()
     modalStore.changeModalState();
@@ -41,7 +43,7 @@ onMounted(() => {
         <div class="header__row header__row--middle">
             <RouterLink :to="'/'" custom v-slot="{navigate}">
                 <button class="header__logo" @click="navigate">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="180" height="45" viewBox="0 0 180 45" fill="none">
+                    <svg xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Логотип" width="180" height="45" viewBox="0 0 180 45" fill="none">
                         <rect x="1.78815" y="7.15289" width="35.7645" height="35.7645" class="h-logo-rect" rx="5.96074"
                             fill="#FCEC41" />
                         <rect y="8.94112" width="35.7645" height="35.7645" class="h-logo-rect" rx="5.96074" fill="#FBE303" />
@@ -95,7 +97,10 @@ onMounted(() => {
             </RouterLink>
             
                 <RouterLink custom v-slot="{navigate}" :to="'/cataloge'">
-                    <ButtonWithIcon :class="'cataloge-button bg-main p-12-20'" :icon="'menu'" @click="navigate">Каталог</ButtonWithIcon>
+                    <ButtonWithIcon :class="'cataloge-button bg-main p-12-20'" :icon="'menu'" @click="() => {
+                        navigate();
+                        addNewPart({name: 'Каталог', link: '/cataloge'})
+                    }">Каталог</ButtonWithIcon>
                 </RouterLink>
                 <SearchBox class="m-l-16" />
                 <div class="header__actions">
@@ -166,11 +171,9 @@ onMounted(() => {
 }
 .header__row--middle-stinky {
     position: fixed;
-    left: 0;
     top: 0;
-    right: 0;
     z-index: 99999;
-    max-width: none;
+    max-width: 1440px;
     background-color: white;
 }
 .header__logo {

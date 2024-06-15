@@ -1,18 +1,28 @@
 import { ref } from 'vue'
 import { defineStore } from 'pinia'
-
+type ProductProps = {
+  id: string;
+  title: string;
+  description: string;
+  price: number;
+  discount: number;
+  category: string;
+  subcategory: string;
+  imagePath: string;
+}
+interface ProductCountProps {
+  [key: string]: number
+}
 export const useCartStore = defineStore('cart', () => {
-  const cart = ref([])
-  const productsCount = ref({})
-  function addProduct(item: Object) {
+  const cart = ref<ProductProps[]>([])
+  const productsCount = ref<ProductCountProps>({})
+  function addProduct(item: ProductProps) {
     productsCount.value[item.id] = 1;
     cart.value.push(item)
   }
   function removeProduct(id: string) {
-    console.log('delete', cart)
     cart.value = cart.value.filter(product => id !== product.id)
     productsCount.value[id] = 0;
-    console.log('deleted', cart)
   }
   function setProductCount(item: string, count: number) {
     if(!productsCount.value.hasOwnProperty(item)) {
@@ -28,5 +38,5 @@ export const useCartStore = defineStore('cart', () => {
   function getProducts() {
     return cart;
   }
-  return { setProductCount, getProductCount, addProduct, getProducts, removeProduct }
+  return { setProductCount, getProductCount, addProduct, getProducts, removeProduct, cart, productsCount }
 })

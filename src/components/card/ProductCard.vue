@@ -30,7 +30,7 @@ const priceClasses = {
         </RouterLink>
         <section class="product-card__body">
             <RouterLink :to="link" class="body__description d-inline-block">
-                {{ item.description }}
+                {{ item.title }}
             </RouterLink>
             <div class="body__price">
                 <span v-if="discountPrice !== 0">{{ discountPrice }}</span>
