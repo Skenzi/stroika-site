@@ -29,4 +29,9 @@
 .about-company p:first-of-type {
     margin-block-end: 24px;
 }
+@media (max-width: 400px) {
+    .about-company {
+        padding: 5px;
+    }
+}
 </style>
