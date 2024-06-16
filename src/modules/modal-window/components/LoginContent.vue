@@ -20,10 +20,10 @@ const modalStore = useModalStore();
                 <a href="#" class="m-t-12 form-link">
                     Забыли пароль?
                 </a>
-                <Button class="bg-main m-t-24 w-full">
+                <Button :handler="()=>{}" class="bg-main m-t-24 w-full">
                     Войти
                 </Button>
-                <Button type="button" class="m-t-12 button--border w-full" @click="modalStore.changeModalType('registration')()">
+                <Button type="button" class="m-t-12 button--border w-full" :handler="modalStore.changeModalType('registration')">
                     Создать учетную запись
                 </Button>
             </Form>

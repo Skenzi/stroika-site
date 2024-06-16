@@ -15,7 +15,7 @@ import Button from "../../ui-kit/buttons/Button.vue"
         <div class="document-card__body">
             <div class="document-body__name">Оферта «Безопасная сделка»</div>
             <div>PDF · 10 МБ</div>
-            <Button class="document-card__button">Скачать</Button>
+            <Button :handler="()=>{}" class="document-card__button">Скачать</Button>
         </div>
     </div>
 </template>

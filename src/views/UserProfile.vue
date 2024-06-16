@@ -62,7 +62,7 @@ export default {
                         <input class="form-element input" id="password-repeat" type="password" placeholder="youmail@mail.com" />
                     </div>
                 </div>
-                <ButtonView type="submit" @click="() => {console.log(123)}" class="bg-main m-t-24">
+                <ButtonView type="submit" :handler="() => {console.log(123)}" class="bg-main m-t-24">
                     Сохранить
                 </ButtonView>
             </FormView>

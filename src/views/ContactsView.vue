@@ -1,6 +1,5 @@
 <script lang="ts" setup>
 import AboutCompany from './components/about-company/AboutCompany.vue'
-import ContentBlock from './components/content-block/ContentBlock.vue'
 import PageDescription from './components/page-description/PageDescription.vue'
 </script>
 
@@ -8,7 +7,7 @@ import PageDescription from './components/page-description/PageDescription.vue'
   <main>
     <PageDescription class="main-top" :header="'Контакты'" :pathEnd="'Контакты'" />
     <div class="map"></div>
-    <ContentBlock>
+    <div>
       <h2>ООО «СтройкаСтор»</h2>
       <div class="d-flex m-t-20 gap-16">
         <p class="flex-2">
@@ -24,7 +23,7 @@ import PageDescription from './components/page-description/PageDescription.vue'
       </p>
       <p class="flex-1">Поддержка клиентов <span class="d-inline-block w-full">info@stroykastore.ru</span></p>
       </div>
-    </ContentBlock>
+    </div>
     <AboutCompany />
   </main>
 </template>

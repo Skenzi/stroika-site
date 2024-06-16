@@ -29,7 +29,7 @@ const cities = [
             <SearchBox class="m-24-0" />
             <div class="cities-list">
                 <WrapperArrow v-for="city of cities" :key="city">
-                    <Button class="p-0 text-s-16">{{city}}</Button>
+                    <Button :handler="()=>{}" class="p-0 text-s-16">{{city}}</Button>
                 </WrapperArrow>
             </div>
         </div>

@@ -33,15 +33,15 @@ const products = cartStore.getProducts();
                 </div>
                 <section>
                     <div class="cart__hint">
-                        <img src="/icons/car.svg" />
+                        <img :src="'/icons/car.svg'" />
                         <p>Можно сделать заказ только от одного поставщика</p>
                     </div>
                     <div class="cart__hint">
-                        <img src="/icons/car.svg" />
+                        <img :src="'/icons/car.svg'" />
                         <p>Доставка осуществляется курьерами поставщика или службой курьеров Достависта. Также товар можно забрать самостоятельно от поставщика</p>
                     </div>
                     <div class="cart__hint">
-                        <img src="/icons/car.svg" />
+                        <img :src="'/icons/car.svg'" />
                         <p>Точная сумма доставки будет определена после после подтверждения заказа</p>
                     </div>
                 </section>

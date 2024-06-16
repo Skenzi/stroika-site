@@ -1,76 +1,79 @@
-<script lang="ts">
-import { defineComponent, ref } from 'vue'
+<script setup lang="ts">
+import { ref } from 'vue'
 let movementElement: HTMLElement | null = null;
-
-export default defineComponent({
-    setup(props) {
+const props = defineProps<{
+    start: number,
+    end: number,
+    step: number
+}>()
         const startValue = ref(props.start);
         const endValue = ref(props.end);
         const fullInterval = props.end - props.start;
-        return { fullInterval, startValue, endValue }
-    },
-    props: ['start', 'end', 'step'],
-    methods: {
-        movePoint(ev) {
+        const html = document.querySelector('html');
+        const inputStart = ref()
+        const inputEnd = ref()
+        const endPoint = ref()
+        const startPoint = ref()
+        const rangeFill = ref()
+
+        const movePoint = (ev: MouseEvent) => {
             if (movementElement) {
                 const typePoint = movementElement.dataset.point;
                 const vektor = ev.movementX < 0 ? -1 : 1;
                 if (typePoint === 'start') {
-                    let newValue = this.startValue + (this.step * vektor);
-                    if(newValue < this.start) newValue = this.start
-                    if(newValue > this.end) newValue = this.end
-                    const newPosition = ((newValue - this.start) / this.fullInterval * 100) +'%'
+                    let newValue = startValue.value + (props.step * vektor);
+                    if(newValue < props.start) newValue = props.start
+                    if(newValue > props.end) newValue = props.end
+                    const newPosition = ((newValue - props.start) / fullInterval * 100) +'%'
                     movementElement.style.left = newPosition
-                    this.$refs.rangeFill.style.left = newPosition
-                    this.startValue = newValue
+                    rangeFill.value.style.left = newPosition
+                    startValue.value = newValue
                 }
                 if (typePoint === 'end') {
-                    let newValue = this.endValue + (this.step * vektor);
-                    if(newValue < this.start) newValue = this.start
-                    if(newValue > this.end) newValue = this.end
-                    const newPosition = ((this.end - newValue) / this.fullInterval * 100) +'%'
+                    let newValue = endValue.value + (props.step * vektor);
+                    if(newValue < props.start) newValue = props.start
+                    if(newValue > props.end) newValue = props.end
+                    const newPosition = ((props.end - newValue) / fullInterval * 100) +'%'
                     movementElement.style.right = newPosition
-                    this.$refs.rangeFill.style.right = newPosition
-                    this.endValue = newValue
+                    rangeFill.value.style.right = newPosition
+                    endValue.value = newValue
                 }
             }
-        },
-        movedPoint(ev) {
-            if(Number.isNaN(+ev.target.value)) {
-                ev.target.value = ev.target === this.$refs.inputStart ? this.startValue : this.endValue
+        }
+        const movedPoint = (ev: Event) => {
+            const target = ev.target as HTMLInputElement
+            if(Number.isNaN(+target.value)) {
+                target.value = ev.target === inputStart.value ? String(startValue.value) : String(endValue.value)
                 return
             };
-            if(ev.target === this.$refs.inputStart) {
-                this.startValue = +ev.target.value;
-                if (this.startValue < this.start) this.startValue = this.start
-                if (this.startValue > this.end) this.startValue = this.end
+            if(ev.target === inputStart.value) {
+                startValue.value = +target.value;
+                if (startValue.value < props.start) startValue.value = props.start
+                if (startValue.value > props.end) startValue.value = props.end
                 
-                const newPositionPoint = ((this.startValue - this.start) / this.fullInterval * 100) +'%';
-                this.$refs.startPoint.style.left = newPositionPoint;
-                this.$refs.rangeFill.style.left = newPositionPoint
+                const newPositionPoint = ((startValue.value - props.start) / fullInterval * 100) +'%';
+                startPoint.value.style.left = newPositionPoint;
+                rangeFill.value.style.left = newPositionPoint
             } else {
-                this.endValue = +ev.target.value;
-                if(this.endValue > this.end) this.endValue = this.end
-                if (this.endValue < this.start) this.endValue = this.start
+                endValue.value = +target.value;
+                if(endValue.value > props.end) endValue.value = props.end
+                if (endValue.value < props.start) endValue.value = props.start
 
-                const newPositionPoint = ((this.end - this.endValue) / this.fullInterval * 100) +'%';
-                this.$refs.endPoint.style.right = newPositionPoint;
-                this.$refs.rangeFill.style.right = newPositionPoint
+                const newPositionPoint = ((props.end - endValue.value) / fullInterval * 100) +'%';
+                endPoint.value.style.right = newPositionPoint;
+                rangeFill.value.style.right = newPositionPoint
             }
-        },
-        clearHandlerMove() {
-            document.removeEventListener('mousemove', this.movePoint)
-            document.querySelector('html').style.userSelect = 'initial'
-        },
-        startMovePoint(ev) {
-            movementElement = ev.target;
-            const html = document.querySelector('html');
-            document.addEventListener('mouseup', this.clearHandlerMove)
-            document.addEventListener('mousemove', this.movePoint)
-            html.style.userSelect = 'none'
         }
-    }
-})
+        const clearHandlerMove=()=> {
+            document.removeEventListener('mousemove', movePoint)
+            if(html) html.style.userSelect = 'initial'
+        }
+        const startMovePoint=(ev: MouseEvent)=> {
+            movementElement = ev.target as HTMLElement;
+            document.addEventListener('mouseup', clearHandlerMove)
+            document.addEventListener('mousemove', movePoint)
+            if(html) html.style.userSelect = 'none'
+        }
 </script>
 
 

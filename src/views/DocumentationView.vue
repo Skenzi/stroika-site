@@ -1,5 +1,4 @@
 <script lang="ts" setup>
-import ContentBlock from './components/content-block/ContentBlock.vue'
 import PageDescription from './components/page-description/PageDescription.vue'
 import DocumentCard from '../components/card/DocumentCard.vue'
 </script>

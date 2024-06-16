@@ -9,9 +9,9 @@ const props = defineProps({
 
 <template>
     <div class="counter">
-        <ButtonWithIcon class="p-12 button--border" :icon="'plus'" @click="cartStore.setProductCount(productId, 1)" />
+        <ButtonWithIcon class="p-12 button--border" :icon="'plus'" :handler="() => cartStore.setProductCount(productId, 1)" />
         <input class="counter__input" :value="cartStore.getProductCount(productId) || 0"/>
-        <ButtonWithIcon class="p-12 button--border" :icon="'minus'" @click="cartStore.setProductCount(productId, -1)" />
+        <ButtonWithIcon class="p-12 button--border" :icon="'minus'" :handler="() => cartStore.setProductCount(productId, -1)" />
     </div>
 </template>
 

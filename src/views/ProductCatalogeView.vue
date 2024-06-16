@@ -6,11 +6,9 @@ import PageDescription from './components/page-description/PageDescription.vue';
 import ProductMenu from '../components/product-menu/ProductMenu.vue';
 import CardList from '../modules/card-list/CardList.vue';
 import Button from '../ui-kit/buttons/Button.vue';
-const { categories, products } = useProductStore();
+const { products } = useProductStore();
 const route = useRoute()
-console.log(route.params, 1224532652, route.matched)
-const headerText = route.params.category;
-const items = products
+const headerText = route.params.category as string;
 </script>
 
 <template>
@@ -20,13 +18,13 @@ const items = products
             <ProductMenu />
             <div>
                 <div class="group-controls">
-                    <Button class="button--active">Популярные</Button>
-                    <Button>Популярные</Button>
-                    <Button>Популярные</Button>
-                    <Button>Популярные</Button>
+                    <Button :handler="()=>{}" class="button--active">Популярные</Button>
+                    <Button :handler="()=>{}">Популярные</Button>
+                    <Button :handler="()=>{}">Популярные</Button>
+                    <Button :handler="()=>{}">Популярные</Button>
                 </div>
-                <CardList class="m-t-16" :column="3" :card-type="'product'" :items="items">
-                  <ProductCard v-for="item in items" :link="{ name: 'product', params: { category: item.category, subcategory: item.subcategory, product: item.description}}" :key="items.id" :item="item" />
+                <CardList class="m-t-16" :column="3" :card-type="'product'" :items="products">
+                  <ProductCard v-for="item in products" :link="{ name: 'product', params: { category: item.category, subcategory: item.subcategory, product: item.description}}" :key="item.id" :item="item" />
                 </CardList>
             </div>
         </div>

@@ -97,7 +97,7 @@ onMounted(() => {
             </RouterLink>
             
                 <RouterLink custom v-slot="{navigate}" :to="'/cataloge'">
-                    <ButtonWithIcon :class="'cataloge-button bg-main p-12-20'" :icon="'menu'" @click="() => {
+                    <ButtonWithIcon :class="'cataloge-button bg-main p-12-20'" :icon="'menu'" :handler="() => {
                         navigate();
                         addNewPart({name: 'Каталог', link: '/cataloge'})
                     }">Каталог</ButtonWithIcon>

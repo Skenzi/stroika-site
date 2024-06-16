@@ -1,11 +1,10 @@
 <script lang="ts" setup>
-import { defineAsyncComponent, defineProps } from 'vue';
-    const props = defineProps({
-      text: String,
-      handler: { type: Function },
-      side: String,
-      icon: String
-    })
+import { defineAsyncComponent } from 'vue';
+const props = defineProps<{
+    handler: ((payload: MouseEvent) => void) | ((payload: Event) => void) | undefined,
+    side?: string,
+    icon: string
+}>()
     const icon = defineAsyncComponent(() => import(`../../assets/icons/${props.icon}.svg`))
     const classess = {
       'button__icon-after': props.side === 'after',

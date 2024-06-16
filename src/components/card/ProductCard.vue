@@ -3,16 +3,16 @@ import Button from '../../ui-kit/buttons/Button.vue';
 import Counter from '../counter/Counter.vue';
 import { RouterLink } from 'vue-router';
 import { useCartStore } from '@/stores/cartStore';
-const props = defineProps({
-    item: { type: Object, required: true },
-    link: { type: Object, required: true },
-    isRow: Boolean,
-    position: String
-})
+import type { ProductProps } from '@/types/index';
+const props = defineProps<{
+    item: ProductProps,
+    link: object,
+    isRow?: boolean,
+}>()
 const cartStore = useCartStore();
 let discountPrice = 0;
 if (props.item.discount) {
-    discountPrice = (props.item.price * ((100 - props.item.discount) / 100)).toFixed(2);
+    discountPrice = +(props.item.price * ((100 - props.item.discount) / 100)).toFixed(2);
 }
 const cardClasses = {
     'product-card--row': props.isRow,
@@ -36,7 +36,7 @@ const priceClasses = {
                 <span v-if="discountPrice !== 0">{{ discountPrice }}</span>
                 <span :class="priceClasses">{{ item.price }}</span>
             </div>
-            <Button v-if="!cartStore.getProductCount(item.id)" class="bg-main" @click="cartStore.addProduct(item)">В корзину</Button>
+            <Button v-if="!cartStore.getProductCount(item.id)" class="bg-main" :handler="()=>cartStore.addProduct(item)">В корзину</Button>
             <Counter v-else :product-id="item.id" />
         </section>
         <div v-if="discountPrice !== 0" class="product-card__dicount">{{ '-' + item.discount + '%' }}</div>

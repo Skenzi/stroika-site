@@ -1,16 +1,16 @@
 <script lang="ts" setup>
 import { ref, computed } from 'vue';
 import Button from '../../ui-kit/buttons/Button.vue';
-const props = defineProps({
-    items: { type: Array<String>, required: true }
-})
+const props = defineProps<{
+    items: Array<string>
+}>()
 const rusNavItems = [
 'А', 'Б', 'В', 'Г', 'Д', 'Е', 'Ё', 'Ж', 'З', 'И', 'Й', 'К', 'Л', 'М', 'Н', 'О', 'П', 'Р', 'С', 'Т', 'У', 'Ф', 'Х', 'Ц', 'Ч', 'Ш', 'Щ', 'Ъ', 'Ы', 'Ь', 'Э', 'Ю', 'Я'
 ]
 const engNavItems = [
 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'Z',
 ]
-const sortedBrands = [...engNavItems, ...rusNavItems].reduce((acc, marker) => {
+const sortedBrands = [...engNavItems, ...rusNavItems].reduce<{[key: string]: Array<string>}>((acc, marker) => {
     acc[marker] = props.items.filter((brand) => brand.indexOf(marker) === 0);
     return acc;
 }, {})
@@ -37,7 +37,7 @@ const sortedNavItems = computed(() => {
         <section class="navigation-list__sublist" v-for="itemNav in sortedNavItems" :key="itemNav">
             <h2 class="sublist__header">{{ itemNav }}</h2>
             <div class="sublist__body">
-                <Button v-for="brand in sortedBrands[itemNav]" :key="brand">{{brand}}</Button>
+                <Button :handler="()=>{}" v-for="brand in sortedBrands[itemNav]" :key="brand">{{brand}}</Button>
             </div>
         </section>
     </div>

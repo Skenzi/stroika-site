@@ -1,11 +1,10 @@
 <script lang="ts" setup>
 import LinksPath from '@/ui-kit/linksPath/LinksPath.vue';
-const props = defineProps({
-    description: String,
-    header: { type: String, required: true },
-    pathEnd: String,
-    backgroundImagePath: String
-});
+const props = defineProps<{
+    description?: string,
+    header: string,
+    backgroundImagePath?: string
+}>();
 const classes = {
     'description-page--without-image': !props.backgroundImagePath,
 }
@@ -50,6 +49,14 @@ const classes = {
     }
     .description-page--without-image {
         margin: 10px 35px;
+    }
+  }
+  @media (max-width: 400px) {
+    .description-page {
+        padding: 5px;
+    }
+    .description-page--without-image {
+        margin: 10px;
     }
   }
 </style>

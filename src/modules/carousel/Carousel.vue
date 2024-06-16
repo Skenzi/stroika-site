@@ -48,8 +48,8 @@ export default {
     },
     setup(props) {
         onMounted(() => {
-            document.getElementById(props.toLeftId)?.addEventListener('click', handler(-1))
-            document.getElementById(props.toRightId)?.addEventListener('click', handler(1))
+            document.getElementById(props.toLeftId)?.addEventListener('click', ()=>handler(-1))
+            document.getElementById(props.toRightId)?.addEventListener('click', ()=>handler(1))
         })
         return {
             rootCarousel

@@ -9,7 +9,7 @@ import Button from '../ui-kit/buttons/Button.vue';
         <div class="success-icon margin-center-x"></div>
         <h1>Спасибо!</h1>
         <p class="m-t-8">Ваша заявка принята. Мы свяжемся с вами в ближайшее время</p>
-        <Button class="bg-main m-t-24">
+        <Button :handler="()=>{}" class="bg-main m-t-24">
             <RouterLink :to="'/'">Перейти на главную</RouterLink>
         </Button>
     </section>

@@ -28,7 +28,7 @@ import Button from '../../../ui-kit/buttons/Button.vue';
                         <input id="password-repeat" type="password" class="form-element input" placeholder="youmail@mail.com" />
                     </div>
                 </div>
-                <Button class="bg-main m-t-24">
+                <Button :handler="()=>{}" class="bg-main m-t-24">
                     Зарегистрироваться
                 </Button>
             </Form>

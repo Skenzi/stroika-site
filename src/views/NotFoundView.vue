@@ -9,7 +9,7 @@ import Button from '../ui-kit/buttons/Button.vue';
         <h1>404</h1>
         <h2 class="m-t-8">Страница не найдена</h2>
         <p class="m-t-8">Неправильно набран адрес или такая страница больше не существует</p>
-        <Button class="bg-main m-t-24">
+        <Button :handler="()=>{}" class="bg-main m-t-24">
             <RouterLink :to="'/'">Перейти на главную</RouterLink>
         </Button>
     </section>

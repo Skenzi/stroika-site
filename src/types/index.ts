@@ -1,5 +1,8 @@
 export type ProductProps = {
     "id": string,
+    "title": string,
+    "brand": string,
+    "deliver": string,
     "description": string,
     "price": number,
     "discount": number,

@@ -9,7 +9,7 @@ const modalStore = useModalStore();
         <div class="modal">
             <h2 class="modal__header">{{ modalStore.modalHeader }}</h2>
             <div>{{ modalStore.modalText }}</div>
-            <Button @click="modalStore.changeModalState">
+            <Button :handler="modalStore.changeModalState">
                 Понял
             </Button>
         </div>

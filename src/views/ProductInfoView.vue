@@ -27,7 +27,7 @@ const items = products.slice(0, 4)
                         наличии</div>
                     <p class="product__price">212 ₽</p>
                     <form class="product__form">
-                        <Button class="bg-main" type="submit">В корзину</Button>
+                        <Button :handler="()=>{}" class="bg-main" type="submit">В корзину</Button>
                         <Counter :product-id="'test'" />
                     </form>
                     <p>Поставщик: Аксон</p>

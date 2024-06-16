@@ -6,9 +6,9 @@ import Dropdown from '../../ui-kit/dropdown/Dropdown.vue';
 import Button from '../../ui-kit/buttons/Button.vue';
 import CheckBox from '../../ui-kit/checkbox/CheckBox.vue';
 const inputState = ref('Аксон')
-const formHandler = (ev) => {
+const formHandler = (ev: Event) => {
     ev.preventDefault();
-    const formData = new FormData(ev.currentTarget);
+    const formData = new FormData(ev.currentTarget as HTMLFormElement);
 }
 </script>
 
@@ -57,8 +57,8 @@ const formHandler = (ev) => {
             </div>
         </div>
         <div class="border-wrapper border-wrapper--sm w-sm border-t-none">
-            <Button class="bg-main w-full">Применить</Button>
-            <Button class="button--border w-full m-t-12">Сбросить</Button>
+            <Button :handler="()=>{}" class="bg-main w-full">Применить</Button>
+            <Button :handler="()=>{}" class="button--border w-full m-t-12">Сбросить</Button>
         </div>
     </form>
 </template>

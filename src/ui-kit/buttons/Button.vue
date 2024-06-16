@@ -1,9 +1,7 @@
-<script lang="ts">
-export default {
-        props: {
-            handler: { type: Function },
-        }
-    }
+<script setup lang="ts">
+defineProps<{
+    handler: ((payload: MouseEvent) => void) | ((payload: Event) => void) | undefined,
+}>()
 </script>
 
 <template>
