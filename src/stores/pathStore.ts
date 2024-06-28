@@ -5,17 +5,22 @@ interface PathProps {
     link: string
 }
 export const usePathStore = defineStore('path', () => {
-    const path = ref<PathProps[]>([{
-        name: 'Главная',
-        link: '/'
-    }]);
+    const path = ref<PathProps[]>([
+        {
+            name: 'Главная',
+            link: '/'
+        },
+        {
+            name: 'Каталог',
+            link: '/cataloge'
+        }
+    ]);
     function slicePath(key: string) {
         const newPath = []
         for(const part of path.value) {
             newPath.push(part)
             if(part.name === key) break;
         }
-        console.log(newPath)
         path.value = newPath
     }
     function addNewPart(part: PathProps) {
@@ -23,6 +28,7 @@ export const usePathStore = defineStore('path', () => {
         path.value.push({...part, link: link.link+part.link})
     }
     function getPath() {
+
         return path
     }
     function getLastLink() {

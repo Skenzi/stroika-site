@@ -5,7 +5,7 @@ import Button from '../ui-kit/buttons/Button.vue';
 import CardList from '../modules/card-list/CardList.vue';
 import ProductCard from '../components/card/ProductCard.vue';
 import Counter from '../components/counter/Counter.vue';
-import LinksPath from '../ui-kit/linksPath/LinksPath.vue';
+import LinksPath from '../components/links-path/LinksPath.vue';
 
 const { products } = useProductStore()
 const route = useRoute()

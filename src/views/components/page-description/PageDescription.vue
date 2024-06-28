@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import LinksPath from '@/ui-kit/linksPath/LinksPath.vue';
+import LinksPath from '@/components/links-path/LinksPath.vue';
 const props = defineProps<{
     description?: string,
     header: string,

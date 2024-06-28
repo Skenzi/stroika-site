@@ -52,8 +52,8 @@ const comments = commentStore.comments
       <div class="d-flex justify-between align-center m-b-18">
             <h2>Отзывы</h2>
             <div class="group-controls">
-              <ButtonWithIcon class="button-icon button--border" :icon="'chevronL'" id="toLeftCarousel" :handler="() => 'Hello'"  />
-              <ButtonWithIcon class="button-icon button--border" :icon="'chevronR'" id="toRightCarousel" :handler="() => 'Hello'"  />
+              <ButtonWithIcon class="button-icon button--border" :icon="'chevronL'" id="toLeftCarousel" :handler="() => {}"  />
+              <ButtonWithIcon class="button-icon button--border" :icon="'chevronR'" id="toRightCarousel" :handler="() => {}"  />
             </div>
       </div>
       <Carousel :items="comments" :to-left-id="'toLeftCarousel'" :to-right-id="'toRightCarousel'" />
