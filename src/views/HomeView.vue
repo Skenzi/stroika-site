@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import Slider from '../components/slider/Slider.vue';
-import Carousel from '../modules/carousel/Carousel.vue';
+import CommentsList from '../modules/comments-list/CommentsList.vue';
 import ButtonWithIcon from '../ui-kit/buttons/ButtonWithIcon.vue';
 import CardList from '../modules/card-list/CardList.vue';
 import ProductCard from '../components/card/ProductCard.vue';
@@ -49,14 +49,7 @@ const comments = commentStore.comments
       </CardList>
     </section>
     <section class="p-80-140 bg-light-grey overflow-x-hidden">
-      <div class="d-flex justify-between align-center m-b-18">
-            <h2>Отзывы</h2>
-            <div class="group-controls">
-              <ButtonWithIcon class="button-icon button--border" :icon="'chevronL'" id="toLeftCarousel" :handler="() => {}"  />
-              <ButtonWithIcon class="button-icon button--border" :icon="'chevronR'" id="toRightCarousel" :handler="() => {}"  />
-            </div>
-      </div>
-      <Carousel :items="comments" :to-left-id="'toLeftCarousel'" :to-right-id="'toRightCarousel'" />
+      <CommentsList :items="comments" :to-left-id="'toLeftCarousel'" :to-right-id="'toRightCarousel'" />
     </section>
     <AboutCompany />
   </main>
