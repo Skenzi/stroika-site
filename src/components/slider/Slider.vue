@@ -1,6 +1,6 @@
 <script lang="ts" setup>
-import ButtonWithIcon from "../../ui-kit/buttons/ButtonWithIcon.vue";
-import Button from "../../ui-kit/buttons/Button.vue";
+import ButtonWithIcon from "../../ui-kit/buttons/AppButtonWithIcon.vue";
+import Button from "../../ui-kit/buttons/AppButton.vue";
 import { ref, computed } from "vue";
 
 const slides = [

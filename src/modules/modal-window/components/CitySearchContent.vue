@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import Button from '../../../ui-kit/buttons/Button.vue';
+import Button from '../../../ui-kit/buttons/AppButton.vue';
 import SearchBox from '../../../ui-kit/searchbox/SearchBox.vue';
 import WrapperArrow from '../../../ui-kit/wrapperArrow/WrapperArrow.vue';
 import { useModalStore } from '../../../stores/modal';

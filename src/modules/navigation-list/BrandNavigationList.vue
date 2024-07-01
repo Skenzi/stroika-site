@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { ref, computed } from 'vue';
-import Button from '../../ui-kit/buttons/Button.vue';
+import Button from '../../ui-kit/buttons/AppButton.vue';
 const props = defineProps<{
     items: Array<string>
 }>()

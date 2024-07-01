@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import { ref } from 'vue';
 import { RouterLink } from 'vue-router';
-import Button from '../../ui-kit/buttons/Button.vue';
+import Button from '../../ui-kit/buttons/AppButton.vue';
 import CategoryCard from '../../components/card/CategoryCard.vue';
 import WrapperArrow from '../../ui-kit/wrapperArrow/WrapperArrow.vue';
 import { useProductStore } from '../../stores/productStore';

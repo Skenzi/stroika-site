@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { RouterLink } from 'vue-router';
-import Button from '../ui-kit/buttons/Button.vue';
+import Button from '../ui-kit/buttons/AppButton.vue';
 </script>
 
 <template>

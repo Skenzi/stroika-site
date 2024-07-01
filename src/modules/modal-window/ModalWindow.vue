@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import Button from '../../ui-kit/buttons/Button.vue';
+import Button from '../../ui-kit/buttons/AppButton.vue';
 import LoginContent from './components/LoginContent.vue';
 import RegistrationContent from './components/RegistrationContent.vue';
 import CitySearchContent from './components/CitySearchContent.vue';

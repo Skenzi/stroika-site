@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import { ref } from 'vue';
 import CommentCard from '../../components/card/CommentCard.vue';
-import ButtonWithIcon from '@/ui-kit/buttons/ButtonWithIcon.vue';
+import ButtonWithIcon from '@/ui-kit/buttons/AppButtonWithIcon.vue';
 const rootCarousel = ref();
 const handler = (num: number) => {
     const carousel: HTMLElement = rootCarousel.value;
@@ -32,10 +32,10 @@ const handler = (num: number) => {
         <div class="d-flex justify-between align-center m-b-18">
             <h2>Отзывы</h2>
             <div class="group-controls">
-                <ButtonWithIcon @click="handler(-1)" class="button-icon button--border" :icon="'chevronL'" id="toLeftCarousel"
-                    :handler="() => { }" />
-                <ButtonWithIcon @click="handler(1)" class="button-icon button--border" :icon="'chevronR'" id="toRightCarousel"
-                    :handler="() => { }" />
+                <ButtonWithIcon class="button-icon button--border" :icon="'chevronL'" id="toLeftCarousel"
+                    :handler="() => handler(-1)" />
+                <ButtonWithIcon class="button-icon button--border" :icon="'chevronR'" id="toRightCarousel"
+                    :handler="() => handler(1)" />
             </div>
         </div>
         <div class="carousel" ref="rootCarousel">

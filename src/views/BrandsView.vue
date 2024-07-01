@@ -2,7 +2,7 @@
 import CardList from '../modules/card-list/CardList.vue';
 import PageDescription from './components/page-description/PageDescription.vue';
 import BrandNavigationList from '../modules/navigation-list/BrandNavigationList.vue';
-import ButtonWithIcon from '../ui-kit/buttons/ButtonWithIcon.vue';
+import ButtonWithIcon from '../ui-kit/buttons/AppButtonWithIcon.vue';
 
 const items = [
     {

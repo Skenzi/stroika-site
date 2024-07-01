@@ -2,7 +2,7 @@
 import { onMounted } from 'vue';
 import { RouterLink } from 'vue-router'
 import SearchBox from '../../ui-kit/searchbox/SearchBox.vue'
-import ButtonWithIcon from '../../ui-kit/buttons/ButtonWithIcon.vue'
+import ButtonWithIcon from '../../ui-kit/buttons/AppButtonWithIcon.vue'
 import DividingLine from '../../ui-kit/line/DividingLine.vue'
 import { useModalStore } from '../../stores/modal';
 import { usePathStore } from '@/stores/pathStore';

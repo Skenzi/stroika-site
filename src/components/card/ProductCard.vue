@@ -1,15 +1,17 @@
 <script lang="ts" setup>
-import Button from '../../ui-kit/buttons/Button.vue';
+import Button from '../../ui-kit/buttons/AppButton.vue';
 import Counter from '../counter/Counter.vue';
 import { RouterLink } from 'vue-router';
 import { useCartStore } from '@/stores/cartStore';
 import type { ProductProps } from '@/types/index';
+import { useProductStore } from '@/stores/productStore';
+import { getImagePath } from '@/utils';
 const props = defineProps<{
     item: ProductProps,
-    link: object,
     isRow?: boolean,
 }>()
 const cartStore = useCartStore();
+const { setCurrentProduct } = useProductStore()
 let discountPrice = 0;
 if (props.item.discount) {
     discountPrice = +(props.item.price * ((100 - props.item.discount) / 100)).toFixed(2);
@@ -24,23 +26,28 @@ const priceClasses = {
 </script>
 
 <template>
-    <article class="product-card" :class="cardClasses">
-        <RouterLink :to="link" class="d-inline-block w-full">
-            <img class="product-card__image" :src="'/src/assets/images/'+item.imagePath" />
-        </RouterLink>
+    <RouterLink :to="{ name: 'product', params: { category: item.category, subcategory: item.subcategory, product: item.description } }" custom v-slot="{navigate}">
+    <article @click="() => {
+        setCurrentProduct(item)
+        navigate()
+    }" class="product-card" :class="cardClasses">
+        
+            <img class="product-card__image" :src="getImagePath(item.imagePath)" />
         <section class="product-card__body">
-            <RouterLink :to="link" class="body__description d-inline-block">
-                {{ item.title }}
-            </RouterLink>
+            {{ item.title }}
             <div class="body__price">
                 <span v-if="discountPrice !== 0">{{ discountPrice }}</span>
                 <span :class="priceClasses">{{ item.price }}</span>
             </div>
-            <Button v-if="!cartStore.getProductCount(item.id)" class="bg-main" :handler="()=>cartStore.addProduct(item)">В корзину</Button>
+            <Button v-if="!cartStore.getProductCount(item.id)" class="bg-main" :handler="(ev)=>{
+                ev.stopPropagation();
+                cartStore.addProduct(item)
+            }">В корзину</Button>
             <Counter v-else :product-id="item.id" />
         </section>
         <div v-if="discountPrice !== 0" class="product-card__dicount">{{ '-' + item.discount + '%' }}</div>
     </article>
+    </RouterLink>
 </template>
 
 <style scoped>

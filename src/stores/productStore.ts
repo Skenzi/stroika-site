@@ -1,5 +1,6 @@
 import { ref } from 'vue'
 import { defineStore } from 'pinia'
+import type { ProductProps } from '@/types';
 
 export const useProductStore = defineStore('products', () => {
     const products = ref([
@@ -285,5 +286,11 @@ export const useProductStore = defineStore('products', () => {
             ]
         }
     })
-    return { products, categories }
+    const setCurrentProduct = (item: ProductProps) => {
+        sessionStorage.setItem('currentProduct', JSON.stringify(item))
+    }
+    const getCurrentProduct = () => {
+        return JSON.parse(sessionStorage.getItem('currentProduct') || '{}')
+    }
+    return { products, categories, setCurrentProduct, getCurrentProduct }
 })

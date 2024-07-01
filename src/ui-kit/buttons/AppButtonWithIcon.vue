@@ -1,14 +1,15 @@
 <script lang="ts" setup>
-import { defineAsyncComponent } from 'vue';
+import { defineAsyncComponent, toRef } from 'vue';
 const props = defineProps<{
     handler: ((payload: MouseEvent) => void) | ((payload: Event) => void) | undefined,
     side?: string,
     icon: string
 }>()
     const icon = defineAsyncComponent(() => import(`../../assets/icons/${props.icon}.svg`))
+    const refSide = toRef(props, 'side')
     const classess = {
-      'button__icon-after': props.side === 'after',
-      'button__icon-before': props.side === 'before',
+      'button__icon-after': refSide.value === 'after',
+      'button__icon-before': refSide.value === 'before',
     };
 </script>
 

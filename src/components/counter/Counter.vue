@@ -1,14 +1,17 @@
 <script lang="ts" setup>
-import ButtonWithIcon from "../../ui-kit/buttons/ButtonWithIcon.vue";
+import ButtonWithIcon from "../../ui-kit/buttons/AppButtonWithIcon.vue";
 import { useCartStore } from '../../stores/cartStore';
 const cartStore = useCartStore();
 const props = defineProps({
     productId: { type: String, required: true}
 })
+const handlerStop = (ev) => {
+    ev.stopPropagation()
+}
 </script>
 
 <template>
-    <div class="counter">
+    <div class="counter" @click="handlerStop">
         <ButtonWithIcon class="p-12 button--border" :icon="'plus'" :handler="() => cartStore.setProductCount(productId, 1)" />
         <input class="counter__input" :value="cartStore.getProductCount(productId) || 0"/>
         <ButtonWithIcon class="p-12 button--border" :icon="'minus'" :handler="() => cartStore.setProductCount(productId, -1)" />

@@ -1,6 +1,6 @@
 <script lang="ts">
 import FormView from '../components/form/FormView.vue';
-import ButtonView from '../ui-kit/buttons/Button.vue';
+import ButtonView from '../ui-kit/buttons/AppButton.vue';
 import { useModalStore } from '../stores/modal';
 const store = useModalStore();
 let user = 'sss';

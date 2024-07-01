@@ -5,7 +5,7 @@ import ProductCard from '../components/card/ProductCard.vue';
 import PageDescription from './components/page-description/PageDescription.vue';
 import ProductMenu from '../components/product-menu/ProductMenu.vue';
 import CardList from '../modules/card-list/CardList.vue';
-import Button from '../ui-kit/buttons/Button.vue';
+import Button from '../ui-kit/buttons/AppButton.vue';
 const { products } = useProductStore();
 const route = useRoute()
 const headerText = route.params.category as string;
@@ -24,7 +24,7 @@ const headerText = route.params.category as string;
                     <Button :handler="()=>{}">Популярные</Button>
                 </div>
                 <CardList class="m-t-16" :column="3" :card-type="'product'" :items="products">
-                  <ProductCard v-for="item in products" :link="{ name: 'product', params: { category: item.category, subcategory: item.subcategory, product: item.description}}" :key="item.id" :item="item" />
+                    <ProductCard v-for="item in products" :key="item.id" :item="item" />
                 </CardList>
             </div>
         </div>

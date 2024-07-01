@@ -1,16 +1,18 @@
 <script lang="ts" setup>
 import { useRoute } from 'vue-router';
 import { useProductStore } from '../stores/productStore';
-import Button from '../ui-kit/buttons/Button.vue';
+import Button from '../ui-kit/buttons/AppButton.vue';
 import CardList from '../modules/card-list/CardList.vue';
 import ProductCard from '../components/card/ProductCard.vue';
 import Counter from '../components/counter/Counter.vue';
 import LinksPath from '../components/links-path/LinksPath.vue';
+import { getImagePath } from '@/utils';
+import type { ProductProps } from '@/types';
 
-const { products } = useProductStore()
+const { products, getCurrentProduct } = useProductStore()
 const route = useRoute()
-console.log(route.path, route.params, route.matched[0].path)
 const items = products.slice(0, 4)
+const currentProduct: ProductProps = getCurrentProduct()
 </script>
 
 <template>
@@ -19,18 +21,20 @@ const items = products.slice(0, 4)
         <section class="product">
             <div class="d-flex">
                 <div class="product__image-wrapper">
-                    <img class="product__image" src="/src/assets/images/cardImage.png" />
+                    <img class="product__image" :src=getImagePath(currentProduct.imagePath) />
                 </div>
                 <section class="product__main-info">
-                    <h2>Шпатлевка масляно-клеевая 3кг Л-С</h2>
-                    <div class="product__available"><img src="/src/assets/icons/check-circle.svg" width="24" height="24" />В
-                        наличии</div>
-                    <p class="product__price">212 ₽</p>
+                    <h2>{{ currentProduct.title }}</h2>
+                    <div class="product__available">
+                        <img src="/src/assets/icons/check-circle.svg" width="24" height="24" />
+                        В наличии
+                    </div>
+                    <p class="product__price">{{ currentProduct.price }} ₽</p>
                     <form class="product__form">
-                        <Button :handler="()=>{}" class="bg-main" type="submit">В корзину</Button>
-                        <Counter :product-id="'test'" />
+                        <Button :handler="()=>{}" class="bg-main">В корзину</Button>
+                        <Counter :product-id="currentProduct.id" />
                     </form>
-                    <p>Поставщик: Аксон</p>
+                    <p>Поставщик: {{ currentProduct.deliver }}</p>
                     <div class="product__delivery">
                         <img src="/src/assets/icons/car.svg" />
                         <p>Доставка осуществляется курьерами поставщика или службой курьеров Достависта. Также товар можно
@@ -101,7 +105,6 @@ const items = products.slice(0, 4)
             <h2>Похожие товары</h2>
             <CardList :column="4">
                 <ProductCard v-for="item in items"
-                    :link="{ name: 'product', params: { category: item.category, subcategory: item.subcategory, product: item.description } }"
                     :key="item.id" :item="item" />
             </CardList>
         </section>

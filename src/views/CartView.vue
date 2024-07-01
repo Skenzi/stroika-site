@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import PageDescription from './components/page-description/PageDescription.vue';
-import Button from '../ui-kit/buttons/Button.vue';
+import Button from '../ui-kit/buttons/AppButton.vue';
 import Counter from '../components/counter/Counter.vue';
 import { useCartStore } from '@/stores/cartStore';
 

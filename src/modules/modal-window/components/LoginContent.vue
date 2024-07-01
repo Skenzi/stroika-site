@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import Form from '../../../components/form/FormView.vue';
-import Button from '../../../ui-kit/buttons/Button.vue';
+import Button from '../../../ui-kit/buttons/AppButton.vue';
 import { useModalStore } from '../../../stores/modal';
 const modalStore = useModalStore();
 </script>

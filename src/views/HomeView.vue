@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import Slider from '../components/slider/Slider.vue';
 import CommentsList from '../modules/comments-list/CommentsList.vue';
-import ButtonWithIcon from '../ui-kit/buttons/ButtonWithIcon.vue';
+import ButtonWithIcon from '../ui-kit/buttons/AppButtonWithIcon.vue';
 import CardList from '../modules/card-list/CardList.vue';
 import ProductCard from '../components/card/ProductCard.vue';
 import CategoryCard from '../components/card/CategoryCard.vue';
@@ -24,7 +24,7 @@ const comments = commentStore.comments
             <ButtonWithIcon class="bg-main p-12-16-12-24" :icon="'chevronR'" :side="'after'" :handler="() => 'Hello'">Все акции</ButtonWithIcon>
       </div>
       <CardList :card-type="'product'" :column="2">
-        <ProductCard v-for="item in items.slice(0, 4)" :link="{ name: 'product', params: { category: item.category, subcategory: item.subcategory, product: item.description}}" :isRow="true" :key="item.id" :item="item" />
+        <ProductCard v-for="item in items.slice(0, 4)" :isRow="true" :key="item.id" :item="item" />
       </CardList>
     </section>
     <section class="container">
@@ -36,7 +36,7 @@ const comments = commentStore.comments
     <section class="container">
       <h2 class="m-b-18">Популярные товары</h2>
       <CardList :card-type="'product'" :column="4">
-        <ProductCard v-for="item in items.slice(0, 8)" :link="{ name: 'product', params: { category: item.category, subcategory: item.subcategory, product: item.description}}" :key="item.id" :item="item" />
+        <ProductCard v-for="item in items.slice(0, 8)" :key="item.id" :item="item" />
       </CardList>
     </section>
     <section class="container">
